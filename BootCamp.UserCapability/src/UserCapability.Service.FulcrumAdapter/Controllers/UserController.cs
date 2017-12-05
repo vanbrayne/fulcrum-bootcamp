@@ -1,92 +1,86 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
 using UserCapability.Service.FulcrumAdapter.Contract;
-using Xlent.Lever.Authentication.Sdk.Attributes;
 using Xlent.Lever.Libraries2.Core.Assert;
-using Xlent.Lever.Libraries2.Core.Error.Logic;
-using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 using Xlent.Lever.Libraries2.Core.Storage.Model;
 
 namespace UserCapability.Service.FulcrumAdapter.Controllers
 {
     /// <inheritdoc cref="IUserController" />
-    [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
+    // TODO: Add authentication
+    // [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
     [RoutePrefix("api")]
     public class UserController : ApiController, IUserController
     {
-        private readonly User _mockUser = new User
+        private readonly ICrudAll<User, string> _persistance;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="persistance">How we deal with persistance</param>
+        public UserController(ICrudAll<User, string> persistance)
         {
-            Id = "1",
-            Name = "John Doe"
-        };
+            _persistance = persistance;
+        }
         /// <inheritdoc />
         [HttpPost]
         [Route("Users")]
-        public async Task<string> Create([FromBody]User user)
+        public async Task<User> Create([FromBody] User user)
         {
             ServiceContract.RequireNotNull(user, nameof(user));
             ServiceContract.RequireValidated(user, nameof(user));
 
-            return await Task.FromResult("1");
+            return await _persistance.CreateAsync(user);
         }
 
         /// <inheritdoc />
         [HttpGet]
         [Route("Users/{id}")]
-        public Task<User> Read(string id)
+        public async Task<User> Read(string id)
         {
             ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
-            ServiceContract.Require(id == "1", $"{nameof(id)} must be equal to 1");
 
-            return Task.FromResult(_mockUser);
+            return await _persistance.ReadAsync(id);
         }
 
         /// <inheritdoc />
         [HttpGet]
         [Route("Users")]
-        public Task<PageEnvelope<User>> ReadAll(int offset = 0, int? limit = null)
+        public async Task<PageEnvelope<User>> ReadAll(int offset = 0, int? limit = null)
         {
             ServiceContract.RequireGreaterThanOrEqualTo(0, offset, nameof(offset));
             if (limit != null) ServiceContract.RequireGreaterThanOrEqualTo(1, limit.Value, nameof(limit));
 
-            var page = new PageEnvelope<User>()
-            {
-                PageInfo = new PageInfo
-                {
-                    Offset = offset,
-                    Limit = limit ?? 100,
-                    Returned = 1,
-                    Total = 1
-                },
-                Data = new List<User> {_mockUser}
-            };
-
-            return Task.FromResult(page);
+            return await _persistance.ReadAllAsync(offset, limit);
         }
 
         /// <inheritdoc />
         [HttpPut]
         [Route("Users/{id}")]
-        public Task Update(string id, User user)
+        public async Task Update(string id, User user)
         {
-            throw new FulcrumNotImplementedException();
+            ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
+            ServiceContract.RequireValidated(user, nameof(user));
+
+            await _persistance.UpdateAsync(user);
         }
 
         /// <inheritdoc />
         [HttpDelete]
         [Route("Users/{id}")]
-        public Task Delete(string id)
+        public async Task Delete(string id)
         {
-            throw new FulcrumNotImplementedException();
+            ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
+
+            await _persistance.DeleteAsync(id);
         }
 
         /// <inheritdoc />
         [HttpDelete]
         [Route("Users")]
-        public Task DeleteAll()
+        public async Task DeleteAll()
         {
-            throw new FulcrumNotImplementedException();
+            await _persistance.DeleteAllAsync();
         }
     }
 }

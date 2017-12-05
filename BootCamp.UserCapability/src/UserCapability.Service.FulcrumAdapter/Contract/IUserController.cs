@@ -13,7 +13,7 @@ namespace UserCapability.Service.FulcrumAdapter.Contract
         /// </summary>
         /// <param name="user">The data for the user to create.</param>
         /// <returns>The id for the new user.</returns>
-        Task<string> Create(User user);
+        Task<User> Create(User user);
 
         /// <summary>
         /// Read the user with id <paramref name="id"/>.
