@@ -10,6 +10,7 @@ using Xlent.Lever.Libraries2.Core.Storage.Model;
 
 namespace UserCapability.Service.FulcrumAdapter.Controllers
 {
+    /// <inheritdoc cref="IUserController" />
     [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
     [RoutePrefix("api")]
     public class UserController : ApiController, IUserController

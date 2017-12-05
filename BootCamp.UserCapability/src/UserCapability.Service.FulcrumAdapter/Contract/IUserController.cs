@@ -3,6 +3,9 @@ using Xlent.Lever.Libraries2.Core.Storage.Model;
 
 namespace UserCapability.Service.FulcrumAdapter.Contract
 {
+    /// <summary>
+    /// Methods for a <see cref="User"/> resource.
+    /// </summary>
     public interface IUserController
     {
         /// <summary>

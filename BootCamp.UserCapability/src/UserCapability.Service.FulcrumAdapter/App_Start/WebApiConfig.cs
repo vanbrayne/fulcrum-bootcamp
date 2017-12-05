@@ -5,6 +5,7 @@ using UserCapability.Service.FulcrumAdapter;
 using WebActivatorEx;
 using Xlent.Lever.Authentication.Sdk.Handlers;
 using Xlent.Lever.Libraries2.WebApi.Pipe.Inbound;
+#pragma warning disable 1591
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 

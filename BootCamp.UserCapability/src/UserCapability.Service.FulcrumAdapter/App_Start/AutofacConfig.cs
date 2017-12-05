@@ -3,6 +3,7 @@ using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 using Xlent.Lever.Libraries2.Core.MultiTenant.Context;
+#pragma warning disable 1591
 
 namespace UserCapability.Service.FulcrumAdapter
 {

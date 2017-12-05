@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using Xlent.Lever.Libraries2.Core.Application;
 using FulcrumApplicationHelper = Xlent.Lever.Libraries2.WebApi.Application.FulcrumApplicationHelper;
+#pragma warning disable 1591
 
 namespace UserCapability.Service.FulcrumAdapter
 {

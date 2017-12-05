@@ -2,6 +2,7 @@ using System.Web.Http;
 using WebActivatorEx;
 using UserCapability.Service.FulcrumAdapter;
 using Swashbuckle.Application;
+#pragma warning disable 1591
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
