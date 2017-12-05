@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using System.Web.Routing;
+﻿using System.Web.Http;
+using Xlent.Lever.Libraries2.Core.Application;
+using FulcrumApplicationHelper = Xlent.Lever.Libraries2.WebApi.Application.FulcrumApplicationHelper;
 
 namespace UserCapability.Service.FulcrumAdapter
 {
@@ -11,7 +8,13 @@ namespace UserCapability.Service.FulcrumAdapter
     {
         protected void Application_Start()
         {
-            GlobalConfiguration.Configure(WebApiConfig.Register);
+            FulcrumApplicationHelper.WebApiBasicSetup(new ConfigurationManagerAppSettings());
+
+            GlobalConfiguration.Configure(config =>
+            {
+                AutofacConfig.Register(config);
+                WebApiConfig.Register(config);
+            });
         }
     }
 }
