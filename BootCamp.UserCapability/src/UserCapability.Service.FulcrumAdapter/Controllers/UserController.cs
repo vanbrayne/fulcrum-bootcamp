@@ -1,7 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 using UserCapability.Service.FulcrumAdapter.Contract;
 using Xlent.Lever.Libraries2.Core.Assert;
+using Xlent.Lever.Libraries2.Core.Storage.Logic;
 using Xlent.Lever.Libraries2.Core.Storage.Model;
 
 namespace UserCapability.Service.FulcrumAdapter.Controllers
@@ -9,7 +12,7 @@ namespace UserCapability.Service.FulcrumAdapter.Controllers
     /// <inheritdoc cref="IUserController" />
     // TODO: Add authentication
     // [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
-    [RoutePrefix("api")]
+    [RoutePrefix("api/Users")]
     public class UserController : ApiController, IUserController
     {
         private readonly ICrudAll<User, string> _persistance;
@@ -24,7 +27,7 @@ namespace UserCapability.Service.FulcrumAdapter.Controllers
         }
         /// <inheritdoc />
         [HttpPost]
-        [Route("Users")]
+        [Route("")]
         public async Task<User> Create([FromBody] User user)
         {
             ServiceContract.RequireNotNull(user, nameof(user));
@@ -35,7 +38,7 @@ namespace UserCapability.Service.FulcrumAdapter.Controllers
 
         /// <inheritdoc />
         [HttpGet]
-        [Route("Users/{id}")]
+        [Route("{id}")]
         public async Task<User> Read(string id)
         {
             ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
@@ -45,18 +48,16 @@ namespace UserCapability.Service.FulcrumAdapter.Controllers
 
         /// <inheritdoc />
         [HttpGet]
-        [Route("Users")]
-        public async Task<PageEnvelope<User>> ReadAll(int offset = 0, int? limit = null)
+        [Route("")]
+        public Task<IEnumerable<User>> ReadAll()
         {
-            ServiceContract.RequireGreaterThanOrEqualTo(0, offset, nameof(offset));
-            if (limit != null) ServiceContract.RequireGreaterThanOrEqualTo(1, limit.Value, nameof(limit));
-
-            return await _persistance.ReadAllAsync(offset, limit);
+            var users = new PageEnvelopeEnumerable<User>(offset => _persistance.ReadAllAsync(offset).Result);
+            return Task.FromResult((IEnumerable<User>)users);
         }
 
         /// <inheritdoc />
         [HttpPut]
-        [Route("Users/{id}")]
+        [Route("{id}")]
         public async Task Update(string id, User user)
         {
             ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
@@ -67,7 +68,7 @@ namespace UserCapability.Service.FulcrumAdapter.Controllers
 
         /// <inheritdoc />
         [HttpDelete]
-        [Route("Users/{id}")]
+        [Route("{id}")]
         public async Task Delete(string id)
         {
             ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
@@ -77,7 +78,7 @@ namespace UserCapability.Service.FulcrumAdapter.Controllers
 
         /// <inheritdoc />
         [HttpDelete]
-        [Route("Users")]
+        [Route("")]
         public async Task DeleteAll()
         {
             await _persistance.DeleteAllAsync();

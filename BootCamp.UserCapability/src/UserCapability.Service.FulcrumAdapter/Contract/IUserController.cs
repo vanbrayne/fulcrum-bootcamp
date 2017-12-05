@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xlent.Lever.Libraries2.Core.Storage.Model;
 
 namespace UserCapability.Service.FulcrumAdapter.Contract
@@ -24,10 +26,8 @@ namespace UserCapability.Service.FulcrumAdapter.Contract
         /// <summary>
         /// Read all the users.
         /// </summary>
-        /// <param name="offset">The first user to return in the page.</param>
-        /// <param name="limit">The maximum number of item to return in a page.</param>
         /// <returns>The </returns>
-        Task<PageEnvelope<User>> ReadAll(int offset = 0, int? limit = null);
+        Task<IEnumerable<User>> ReadAll();
 
         /// <summary>
         /// Update the user with id <paramref name="id"/> the the values of <paramref name="user"/>.
