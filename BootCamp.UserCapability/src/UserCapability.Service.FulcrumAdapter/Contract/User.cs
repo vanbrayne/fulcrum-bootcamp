@@ -23,13 +23,14 @@ namespace UserCapability.Service.FulcrumAdapter.Contract
         public string Type { get; set; }
 
         /// <inheritdoc />
+        public string ETag { get; set; }
+
+        /// <inheritdoc />
         public void Validate(string errorLocation, string propertyPath = "")
         {
             FulcrumValidate.IsNotNullOrWhiteSpace(Name, nameof(Name), errorLocation);
+            // TODO: More validation?
         }
-
-        /// <inheritdoc />
-        public string ETag { get; set; }
 
         /// <inheritdoc />
         public User DeepCopy()
