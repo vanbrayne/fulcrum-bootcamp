@@ -1,8 +1,11 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Reflection;
 using System.Web.Http;
+using Api.Service.Controllers;
 using Api.Service.Dal;
 using Autofac;
+using Autofac.Core;
 using Autofac.Integration.WebApi;
 using Xlent.Lever.Authentication.Sdk;
 using Xlent.Lever.KeyTranslator.Common.Configuration;
@@ -55,11 +58,19 @@ namespace Api.Service
 
             var translateClient = new TranslateClient(ConfigurationManager.AppSettings["KeyTranslator.Url"], tenant,
                 tokenRefresher.GetServiceClient());
+            builder.RegisterInstance(translateClient).As<ITranslateClient>();
 
             var userClient = new UserClient(ConfigurationManager.AppSettings["UserCapability.Url"],
                 tokenRefresher.GetServiceClient());
 
-            builder.RegisterInstance(translateClient).As<ITranslateClient>();
+            builder.RegisterType<UserController>()
+                .WithParameters(new List<Parameter>
+                {
+                    new NamedParameter("baseUrl", ConfigurationManager.AppSettings["UserCapability.Url"]),
+                    new NamedParameter("credentials", tokenRefresher.GetServiceClient())
+                });
+           
+
             builder.RegisterInstance(userClient).As<IUserClient>();
 
         }

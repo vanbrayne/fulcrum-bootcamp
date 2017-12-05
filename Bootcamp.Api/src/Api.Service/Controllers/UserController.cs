@@ -20,6 +20,7 @@ namespace Api.Service.Controllers
     public class UserController : ApiController
     {
         private readonly IUserClient _userClient;
+        //private ServiceClientCre
 
         public UserController(string baseUrl, ServiceClientCredentials credentials)
         {
