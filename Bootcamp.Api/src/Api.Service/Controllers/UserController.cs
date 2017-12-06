@@ -22,9 +22,9 @@ namespace Api.Service.Controllers
         private readonly IUserClient _userClient;
         //private ServiceClientCre
 
-        public UserController(string baseUrl, ServiceClientCredentials credentials)
+        public UserController(IUserClient userClient)
         {
-            _userClient = new UserClient(baseUrl, credentials);
+            _userClient = userClient;
         }
 
         [Route("{id}")]
