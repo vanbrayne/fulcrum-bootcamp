@@ -15,20 +15,20 @@ namespace UserCapability.Service.FulcrumAdapter.Controllers
     [RoutePrefix("api/Users")]
     public class UserController : ApiController, IUserController
     {
-        private readonly ICrudAll<User, string> _persistance;
+        private readonly ICrud<User, string> _persistance;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="persistance">How we deal with persistance</param>
-        public UserController(ICrudAll<User, string> persistance)
+        public UserController(ICrud<User, string> persistance)
         {
             _persistance = persistance;
         }
         /// <inheritdoc />
         [HttpPost]
         [Route("")]
-        public async Task<User> Create([FromBody] User user)
+        public async Task<string> Create([FromBody] User user)
         {
             ServiceContract.RequireNotNull(user, nameof(user));
             ServiceContract.RequireValidated(user, nameof(user));
@@ -63,7 +63,7 @@ namespace UserCapability.Service.FulcrumAdapter.Controllers
             ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
             ServiceContract.RequireValidated(user, nameof(user));
 
-            await _persistance.UpdateAsync(user);
+            await _persistance.UpdateAsync(user.Id, user);
         }
 
         /// <inheritdoc />

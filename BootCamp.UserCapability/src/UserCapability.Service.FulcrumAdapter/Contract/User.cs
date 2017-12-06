@@ -7,7 +7,7 @@ namespace UserCapability.Service.FulcrumAdapter.Contract
     /// <summary>
     /// A user
     /// </summary>
-    public class User : IValidatable, IStorableItem<string>, IOptimisticConcurrencyControlByETag, IDeepCopy<User>
+    public class User : IValidatable, IUniquelyIdentifiable<string>, IOptimisticConcurrencyControlByETag
     {
         /// <inheritdoc />
         public string Id { get; set; }
@@ -23,23 +23,13 @@ namespace UserCapability.Service.FulcrumAdapter.Contract
         public string Type { get; set; }
 
         /// <inheritdoc />
-        public string ETag { get; set; }
+        public string Etag { get; set; }
 
         /// <inheritdoc />
         public void Validate(string errorLocation, string propertyPath = "")
         {
             FulcrumValidate.IsNotNullOrWhiteSpace(Name, nameof(Name), errorLocation);
             // TODO: More validation?
-        }
-
-        /// <inheritdoc />
-        public User DeepCopy()
-        {
-            return new User
-            {
-                Id = Id,
-                Name = Name
-            };
         }
     }
 }
