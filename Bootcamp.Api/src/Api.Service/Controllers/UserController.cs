@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Api.Service.Dal;
 using Api.Service.Models;
-using Microsoft.Rest;
-using Xlent.Lever.Authentication.Sdk.Attributes;
 using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Error.Logic;
-using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 
 namespace Api.Service.Controllers
 {
     [RoutePrefix("api/Users")]
-    [FulcrumAuthorize(AuthenticationRoleEnum.ExternalSystemUser)]
+    //[FulcrumAuthorize(AuthenticationRoleEnum.ExternalSystemUser)]
     public class UserController : ApiController
     {
         private readonly IUserClient _userClient;

@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Api.Service.Models;
 using Microsoft.Rest;
-using Xlent.Lever.Libraries2.Core.Assert;
 using System.Collections.Generic;
 
 namespace Api.Service.Dal
