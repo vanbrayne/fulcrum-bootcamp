@@ -14,7 +14,7 @@ namespace Api.Service.Dal
             var isWelFormedUri = Uri.IsWellFormedUriString(baseUri, UriKind.Absolute);
             if (!isWelFormedUri) throw new ArgumentException($"{nameof(baseUri)} must be a welformed uri");
 
-            return $"{baseUri}/api/v1";
+            return $"{baseUri}";
         }
 
         protected BaseClient(string baseUri, ServiceClientCredentials authenticationCredentials)

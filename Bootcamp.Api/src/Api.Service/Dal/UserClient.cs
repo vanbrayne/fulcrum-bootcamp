@@ -23,5 +23,11 @@ namespace Api.Service.Dal
             var relativeUrl = $"api/Users";
             await RestClient.DeleteAsync(relativeUrl);
         }
+
+        public async Task<string> AddUser(User user)
+        {
+            var relativeUrl = $"api/Users";
+            return await RestClient.PostAsync<string, User>(relativeUrl, user);
+        }
     }
 }

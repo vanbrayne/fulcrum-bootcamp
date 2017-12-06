@@ -10,6 +10,7 @@ using Api.Service.Dal;
 using Api.Service.Models;
 using Microsoft.Rest;
 using Xlent.Lever.Authentication.Sdk.Attributes;
+using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Error.Logic;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 
@@ -46,9 +47,12 @@ namespace Api.Service.Controllers
 
         [Route("")]
         [HttpPost]
-        public string Post(User user)
+        public async Task<string> Post(User user)
         {
-            throw new FulcrumNotImplementedException();
+            ServiceContract.RequireNotNull(user, nameof(user));
+
+            var relativeUrl = "api/Users";
+            return await _userClient.AddUser(user);
         }
 
         [Route("{id}")]

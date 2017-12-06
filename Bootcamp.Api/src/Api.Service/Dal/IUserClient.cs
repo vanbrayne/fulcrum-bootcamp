@@ -7,6 +7,7 @@ namespace Api.Service.Dal
     public interface IUserClient
     {
         Task<List<User>> GetUsers();
+        Task<string> AddUser(User user);
         Task DeleteUsers();
     }
 }
