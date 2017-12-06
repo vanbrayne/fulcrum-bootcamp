@@ -18,7 +18,7 @@ namespace UserCapability.Service.FulcrumAdapter
             var builder = new ContainerBuilder();
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterType<MemoryPersistance<User, string>>().As<ICrudAll<User, string>>().SingleInstance();
+            builder.RegisterType<MemoryPersistance<User, string>>().As<ICrud<User, string>>().SingleInstance();
 
             builder.RegisterType<TenantConfigurationValueProvider>().As<ITenantConfigurationValueProvider>().SingleInstance();
             var container = builder.Build();
