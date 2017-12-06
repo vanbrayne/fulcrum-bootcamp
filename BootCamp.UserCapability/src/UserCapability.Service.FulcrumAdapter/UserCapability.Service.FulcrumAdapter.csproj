@@ -103,7 +103,7 @@
       <HintPath>..\..\packages\Xlent.Lever.Authentication.Sdk.4.2.0\lib\net46\Xlent.Lever.Authentication.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Xlent.Lever.Libraries2.Core.NetFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xlent.Lever.Libraries2.Core.NetFramework.1.15.7-rc\lib\net46\Xlent.Lever.Libraries2.Core.NetFramework.dll</HintPath>
+      <HintPath>..\..\packages\Xlent.Lever.Libraries2.Core.NetFramework.1.15.8\lib\net46\Xlent.Lever.Libraries2.Core.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Xlent.Lever.Libraries2.WebApi">
       <HintPath>..\..\packages\Xlent.Lever.Libraries2.WebApi.4.3.11\lib\net46\Xlent.Lever.Libraries2.WebApi.dll</HintPath>
