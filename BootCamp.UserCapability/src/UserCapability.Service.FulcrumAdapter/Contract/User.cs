@@ -7,7 +7,7 @@ namespace UserCapability.Service.FulcrumAdapter.Contract
     /// <summary>
     /// A user
     /// </summary>
-    public class User : IValidatable, IIdentifiable<string>, IOptimisticConcurrencyControlByETag
+    public class User : IValidatable, IUniquelyIdentifiable<string>, IOptimisticConcurrencyControlByETag
     {
         /// <inheritdoc />
         public string Id { get; set; }
