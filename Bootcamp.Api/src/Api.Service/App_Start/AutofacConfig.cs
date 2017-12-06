@@ -63,14 +63,6 @@ namespace Api.Service
             var userClient = new UserClient(ConfigurationManager.AppSettings["UserCapability.Url"],
                 tokenRefresher.GetServiceClient());
 
-            builder.RegisterType<UserController>()
-                .WithParameters(new List<Parameter>
-                {
-                    new NamedParameter("baseUrl", ConfigurationManager.AppSettings["UserCapability.Url"]),
-                    new NamedParameter("credentials", tokenRefresher.GetServiceClient())
-                });
-           
-
             builder.RegisterInstance(userClient).As<IUserClient>();
 
         }
