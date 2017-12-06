@@ -43,7 +43,6 @@ namespace Api.Service.Controllers
         {
             ServiceContract.RequireNotNull(user, nameof(user));
 
-            var relativeUrl = "api/Users";
             return await _userClient.AddUser(user);
         }
 

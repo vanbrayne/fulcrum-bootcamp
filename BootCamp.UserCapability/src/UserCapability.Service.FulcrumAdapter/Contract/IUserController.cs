@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Xlent.Lever.Libraries2.Core.Storage.Model;
 
 namespace UserCapability.Service.FulcrumAdapter.Contract
 {
