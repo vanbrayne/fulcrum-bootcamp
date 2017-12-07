@@ -15,18 +15,18 @@ namespace Api.Service.Controllers
     [RoutePrefix("UserStatistics")]
     public class UserStatisticsController : ApiController
     {
-        private readonly IUserClient _userClient;
+        private readonly ICustomerMasterClient _customerMasterClient;
 
-        public UserStatisticsController(IUserClient userClient)
+        public UserStatisticsController(ICustomerMasterClient customerMasterClient)
         {
-            _userClient = userClient;
+            _customerMasterClient = customerMasterClient;
         }
 
         [Route("")]
         [HttpGet]
         public async Task<UserStatistics> Get(string type = null, DateTimeOffset? startInclusive = null, DateTimeOffset? endExclusive = null)
         {
-            return await _userClient.GetStatistics(type, startInclusive, endExclusive);
+            return await _customerMasterClient.GetStatistics(type, startInclusive, endExclusive);
         }
     }
 }
