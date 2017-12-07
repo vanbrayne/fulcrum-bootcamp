@@ -142,6 +142,7 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BusinessEventsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Dal\BaseClient.cs" />
     <Compile Include="Dal\IUserClient.cs" />
