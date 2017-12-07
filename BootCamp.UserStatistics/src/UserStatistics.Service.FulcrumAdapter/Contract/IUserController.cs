@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace UserCapability.Service.FulcrumAdapter.Contract
+namespace UserStatistics.Service.FulcrumAdapter.Contract
 {
     /// <summary>
     /// Methods for a <see cref="User"/> resource.

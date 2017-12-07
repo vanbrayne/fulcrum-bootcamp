@@ -1,8 +1,9 @@
 ﻿using System.Web.Http;
 using Xlent.Lever.Libraries2.Core.Application;
 using FulcrumApplicationHelper = Xlent.Lever.Libraries2.WebApi.Application.FulcrumApplicationHelper;
+#pragma warning disable 1591
 
-namespace Api.Service
+namespace UserStatistics.Service.FulcrumAdapter
 {
     public class WebApiApplication : System.Web.HttpApplication
     {
@@ -10,12 +11,11 @@ namespace Api.Service
         {
             FulcrumApplicationHelper.WebApiBasicSetup(new ConfigurationManagerAppSettings());
 
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            GlobalConfiguration.Configure(SwaggerConfig.Register);
-            GlobalConfiguration.Configure(AutofacConfig.Register);
-
-            GlobalConfiguration.Configuration.EnsureInitialized();
-
+            GlobalConfiguration.Configure(config =>
+            {
+                AutofacConfig.Register(config);
+                WebApiConfig.Register(config);
+            });
         }
     }
 }

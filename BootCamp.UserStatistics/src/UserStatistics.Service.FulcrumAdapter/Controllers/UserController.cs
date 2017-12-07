@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
-using UserCapability.Service.FulcrumAdapter.Contract;
+using UserStatistics.Service.FulcrumAdapter.Contract;
 using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Storage.Logic;
 using Xlent.Lever.Libraries2.Core.Storage.Model;
 
-namespace UserCapability.Service.FulcrumAdapter.Controllers
+namespace UserStatistics.Service.FulcrumAdapter.Controllers
 {
     /// <inheritdoc cref="IUserController" />
     // TODO: Add authentication

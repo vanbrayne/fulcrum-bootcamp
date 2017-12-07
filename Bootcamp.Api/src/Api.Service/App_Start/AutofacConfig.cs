@@ -1,16 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Reflection;
 using System.Web.Http;
-using Api.Service.Controllers;
 using Api.Service.Dal;
 using Autofac;
-using Autofac.Core;
 using Autofac.Integration.WebApi;
 using Xlent.Lever.Authentication.Sdk;
-using Xlent.Lever.KeyTranslator.Common.Configuration;
 using Xlent.Lever.KeyTranslator.RestClients.Facade.Clients;
-using Xlent.Lever.Libraries2.Core.MultiTenant.Context;
 using Xlent.Lever.Libraries2.Core.MultiTenant.Model;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 

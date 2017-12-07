@@ -1,16 +1,16 @@
-using System;
 using System.Web.Http;
 using WebActivatorEx;
-using Api.Service;
-using Api.Service.Helper;
+using UserStatistics.Service.FulcrumAdapter;
 using Swashbuckle.Application;
-using Swashbuckle.Swagger;
+#pragma warning disable 1591
 
-namespace Api.Service
+[assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
+
+namespace UserStatistics.Service.FulcrumAdapter
 {
     public class SwaggerConfig
     {
-        public static void Register(HttpConfiguration config)
+        public static void Register()
         {
             var thisAssembly = typeof(SwaggerConfig).Assembly;
 
@@ -33,8 +33,7 @@ namespace Api.Service
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
                         //
-                        c.SingleApiVersion("v1", "Api.Service");
-                        c.SchemaFilter<SchemaExamples>();
+                        c.SingleApiVersion("v1", "UserStatistics.Service.FulcrumAdapter");
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //
@@ -63,7 +62,7 @@ namespace Api.Service
                         //c.BasicAuth("basic")
                         //    .Description("Basic HTTP Authentication");
                         //
-                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+						// NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
                         //c.ApiKey("apiKey")
                         //    .Description("API Key Authentication")
                         //    .Name("apiKey")
@@ -145,7 +144,7 @@ namespace Api.Service
                         // enum type. Swashbuckle will honor this change out-of-the-box. However, if you use a different
                         // approach to serialize enums as strings, you can also force Swashbuckle to describe them as strings.
                         //
-                        c.DescribeAllEnumsAsStrings();
+                        //c.DescribeAllEnumsAsStrings();
 
                         // Similar to Schema filters, Swashbuckle also supports Operation and Document filters:
                         //

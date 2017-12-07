@@ -1,27 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Api.Service.Dal;
 using Api.Service.Models;
-using Microsoft.Rest;
-using Xlent.Lever.Authentication.Sdk.Attributes;
 using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Error.Logic;
-using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 
 namespace Api.Service.Controllers
 {
     [RoutePrefix("api/Users")]
-    //[FulcrumAuthorize(AuthenticationRoleEnum.ExternalSystemUser)]
+    // TODO: enable [FulcrumAuthorize(AuthenticationRoleEnum.ExternalSystemUser)]
     public class UserController : ApiController
     {
         private readonly IUserClient _userClient;
-        //private ServiceClientCre
 
         public UserController(IUserClient userClient)
         {
@@ -32,6 +23,8 @@ namespace Api.Service.Controllers
         [HttpGet]
         public User Get(string id)
         {
+            ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
+
             throw new FulcrumNotImplementedException();
         }
 
@@ -51,7 +44,6 @@ namespace Api.Service.Controllers
         {
             ServiceContract.RequireNotNull(user, nameof(user));
 
-            var relativeUrl = "api/Users";
             return await _userClient.AddUser(user);
         }
 
@@ -59,6 +51,9 @@ namespace Api.Service.Controllers
         [HttpPut]
         public User Put(string id, User user)
         {
+            ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
+            ServiceContract.RequireNotNull(user, nameof(user));
+
             throw new FulcrumNotImplementedException();
         }
 
@@ -66,6 +61,8 @@ namespace Api.Service.Controllers
         [HttpDelete]
         public User DeleteOne(string id)
         {
+            ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
+
             throw new FulcrumNotImplementedException();
         }
 
@@ -78,8 +75,5 @@ namespace Api.Service.Controllers
         {
             await _userClient.DeleteUsers();
         }
-
-
-
     }
 }
