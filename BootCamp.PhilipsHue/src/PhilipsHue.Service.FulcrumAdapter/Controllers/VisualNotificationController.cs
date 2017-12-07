@@ -7,13 +7,14 @@ using Q42.HueApi;
 using Q42.HueApi.ColorConverters;
 using Q42.HueApi.Interfaces;
 using Q42.HueApi.ColorConverters.HSB;
+using Xlent.Lever.Authentication.Sdk.Attributes;
 using Xlent.Lever.Libraries2.Core.Assert;
+using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 
 namespace PhilipsHue.Service.FulcrumAdapter.Controllers
 {
     /// <inheritdoc cref="IVisualNotificationController" />
-    // TODO: Add authentication
-    // [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
+    [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
     [RoutePrefix("api/Notifications")]
     public class VisualNotificationController : ApiController, IVisualNotificationController
     {

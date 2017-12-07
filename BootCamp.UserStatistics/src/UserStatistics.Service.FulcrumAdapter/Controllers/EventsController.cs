@@ -1,16 +1,17 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 using UserStatistics.Service.FulcrumAdapter.Contract;
+using Xlent.Lever.Authentication.Sdk.Attributes;
 using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Error.Logic;
+using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 
 namespace UserStatistics.Service.FulcrumAdapter.Controllers
 {
     /// <summary>
     /// Receive events
     /// </summary>
-    // TODO: Add authentication
-    // [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
+    [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
     [RoutePrefix("api/Events")]
     public class EventsController : ApiController
     {

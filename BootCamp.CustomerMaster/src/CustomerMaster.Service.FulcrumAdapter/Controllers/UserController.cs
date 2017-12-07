@@ -3,15 +3,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using CustomerMaster.Service.FulcrumAdapter.Contract;
+using Xlent.Lever.Authentication.Sdk.Attributes;
 using Xlent.Lever.Libraries2.Core.Assert;
+using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 using Xlent.Lever.Libraries2.Core.Storage.Logic;
 using Xlent.Lever.Libraries2.Core.Storage.Model;
 
 namespace CustomerMaster.Service.FulcrumAdapter.Controllers
 {
     /// <inheritdoc />
-    // TODO: Add authentication
-    // [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
+    [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
     [RoutePrefix("api/Users")]
     public class UserController : ApiController
     {
