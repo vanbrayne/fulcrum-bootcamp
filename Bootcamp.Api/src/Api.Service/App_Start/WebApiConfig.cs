@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
+using Swashbuckle.Application;
 using Xlent.Lever.Authentication.Sdk.Handlers;
 using Xlent.Lever.Libraries2.WebApi.Pipe.Inbound;
 
@@ -23,12 +24,14 @@ namespace Api.Service
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            // Redirect root to Swagger UI
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-        }
+                name: "Swagger UI",
+                routeTemplate: "",
+                defaults: null,
+                constraints: null,
+                handler: new RedirectHandler(SwaggerDocsConfig.DefaultRootUrlResolver, "swagger/ui/index"));
 
+        }
     }
 }
