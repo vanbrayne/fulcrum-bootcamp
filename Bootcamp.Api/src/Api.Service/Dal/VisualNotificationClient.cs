@@ -12,21 +12,21 @@ namespace Api.Service.Dal
         {
         }
 
-        public async Task VisualNotificationSuccessAsync(double seconds)
+        public async Task VisualNotificationSuccessAsync()
         {
-            var relativeUrl = $"api/Notifications/Success?seconds={seconds}";
+            var relativeUrl = $"api/Notifications/Success";
             await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
 
-        public async Task VisualNotificationWarningAsync(double seconds)
+        public async Task VisualNotificationWarningAsync()
         {
-            var relativeUrl = $"api/Notifications/Warning?seconds={seconds}";
+            var relativeUrl = $"api/Notifications/Warning";
             await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
 
-        public async Task VisualNotificationErrorAsync(double seconds)
+        public async Task VisualNotificationErrorAsync()
         {
-            var relativeUrl = $"api/Notifications/Error?seconds={seconds}";
+            var relativeUrl = $"api/Notifications/Error";
             await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
     }

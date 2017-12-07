@@ -10,7 +10,7 @@ using Xlent.Lever.Libraries2.Core.Assert;
 
 namespace Api.Service.Controllers
 {
-    [RoutePrefix("VisualNotification")]
+    [RoutePrefix("api/VisualNotification")]
     public class VisualNotificationController : ApiController
     {
         private readonly IVisualNotificationClient _client;
@@ -21,25 +21,25 @@ namespace Api.Service.Controllers
 
         [HttpPost]
         [Route("Success")]
-        public async Task SuccessAsync(double seconds)
+        public async Task SuccessAsync()
         {
-            await _client.VisualNotificationSuccessAsync(seconds);
+            await _client.VisualNotificationSuccessAsync();
         }
 
         /// <inheritdoc />
         [HttpPost]
         [Route("Warning")]
-        public async Task WarningAsync(double seconds)
+        public async Task WarningAsync()
         {
-            await _client.VisualNotificationWarningAsync(seconds);
+            await _client.VisualNotificationWarningAsync();
         }
 
         /// <inheritdoc />
         [HttpPost]
         [Route("Error")]
-        public async Task ErrorAsync(double seconds)
+        public async Task ErrorAsync()
         {
-            await _client.VisualNotificationErrorAsync(seconds);
+            await _client.VisualNotificationErrorAsync();
         }
     }
 }
