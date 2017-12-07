@@ -129,9 +129,11 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Contract\IUserController.cs" />
-    <Compile Include="Contract\User.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Contract\IUserStatisticsController.cs" />
+    <Compile Include="Contract\UserStatistics.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\UserStatisticsController.cs" />
+    <Compile Include="Contract\UserCreatedEvent.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

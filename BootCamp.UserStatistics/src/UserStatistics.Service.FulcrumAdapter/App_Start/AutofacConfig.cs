@@ -2,7 +2,6 @@
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
-using UserStatistics.Service.FulcrumAdapter.Contract;
 using Xlent.Lever.Libraries2.Core.MultiTenant.Context;
 using Xlent.Lever.Libraries2.Core.Storage.Logic;
 using Xlent.Lever.Libraries2.Core.Storage.Model;
@@ -18,7 +17,7 @@ namespace UserStatistics.Service.FulcrumAdapter
             var builder = new ContainerBuilder();
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterType<MemoryPersistance<User, string>>().As<ICrud<User, string>>().SingleInstance();
+            builder.RegisterType<MemoryPersistance<Contract.UserStatistics, string>>().As<ICrud<Contract.UserStatistics, string>>().SingleInstance();
 
             builder.RegisterType<TenantConfigurationValueProvider>().As<ITenantConfigurationValueProvider>().SingleInstance();
             var container = builder.Build();
