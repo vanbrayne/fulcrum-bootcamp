@@ -1,5 +1,8 @@
 ﻿using System.Web.Http;
 using Xlent.Lever.Libraries2.Core.Application;
+using Xlent.Lever.Libraries2.Core.Platform.Configurations;
+using Xlent.Lever.Logger.Sdk;
+using Xlent.Lever.Logger.Sdk.RestClients;
 using FulcrumApplicationHelper = Xlent.Lever.Libraries2.WebApi.Application.FulcrumApplicationHelper;
 
 namespace Api.Service
@@ -15,7 +18,6 @@ namespace Api.Service
             GlobalConfiguration.Configure(AutofacConfig.Register);
 
             GlobalConfiguration.Configuration.EnsureInitialized();
-
         }
     }
 }
