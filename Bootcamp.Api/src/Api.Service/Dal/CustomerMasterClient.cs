@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Api.Service.Models;
 using Microsoft.Rest;
 using System.Collections.Generic;
+using System.Web;
 
 namespace Api.Service.Dal
 {
@@ -12,9 +13,10 @@ namespace Api.Service.Dal
         {
         }
 
-        public async Task<List<User>> GetUsers()
+        public async Task<List<User>> GetUsers(string type = null)
         {
             var relativeUrl = "api/Users";
+            if (!string.IsNullOrWhiteSpace(type)) relativeUrl += $"?type={HttpUtility.UrlEncode(type)}";
             return await RestClient.GetAsync<List<User>>(relativeUrl);
         }
 
