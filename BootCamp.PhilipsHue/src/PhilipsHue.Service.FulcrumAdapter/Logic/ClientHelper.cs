@@ -3,6 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.UI;
 using Q42.HueApi;
+using Q42.HueApi.ColorConverters;
+using Q42.HueApi.ColorConverters.HSB;
 using Q42.HueApi.Interfaces;
 using Xlent.Lever.Libraries2.Core.Error.Logic;
 
@@ -15,6 +17,22 @@ namespace PhilipsHue.Service.FulcrumAdapter.Logic
     /// https://github.com/Q42/Q42.HueApi/blob/master/src/Q42.HueApi.RemoteApi.Sample/MainPage.xaml.cs
     public static class ClientHelper
     {
+        /// <summary>
+        /// The known colors
+        /// </summary>
+        public enum ColorEnum
+        {
+#pragma warning disable 1591
+            Unknown,
+            Green,
+            Yellow,
+            Red
+#pragma warning restore 1591
+        };
+        internal const string GreenColorHex = "0x00FF00";
+        internal const string YellowColorHex = "0xFFFF00";
+        internal const string RedColorHex = "0xFF0000";
+
         /// <summary>
         /// Get a Philips Hue remote client
         /// </summary>
@@ -67,6 +85,56 @@ namespace PhilipsHue.Service.FulcrumAdapter.Logic
             //    }
             //}
             return await Task.FromResult((IHueClient)null);
+        }
+
+        /// <summary>
+        /// Get the rgb color
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public static RGBColor GetRgbColor(ColorEnum color)
+        {
+            string colorAsHex;
+            switch (color)
+            {
+                case ColorEnum.Green:
+                    colorAsHex = GreenColorHex;
+                    break;
+                case ColorEnum.Yellow:
+                    colorAsHex = YellowColorHex;
+                    break;
+                case ColorEnum.Red:
+                    colorAsHex = RedColorHex;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(color), color, null);
+            }
+            return new RGBColor(colorAsHex);
+        }
+
+        /// <summary>
+        /// Get the color that a command has.
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        public static ColorEnum GetColorFromCommand(LightCommand command)
+        {
+            var colorCommand = new LightCommand();
+            colorCommand.SetColor(GetRgbColor(ColorEnum.Green));
+            if (HasSameColor(colorCommand, command)) return ColorEnum.Green;
+            colorCommand.SetColor(GetRgbColor(ColorEnum.Yellow));
+            if (HasSameColor(colorCommand, command)) return ColorEnum.Yellow;
+            colorCommand.SetColor(GetRgbColor(ColorEnum.Red));
+            if (HasSameColor(colorCommand, command)) return ColorEnum.Red;
+            return ColorEnum.Unknown;
+        }
+
+        private static bool HasSameColor(LightCommand expected, LightCommand actual)
+        {
+            if (expected.Hue != actual.Hue) return false;
+            if (expected.Saturation != actual.Saturation) return false;
+            if (expected.Brightness != actual.Brightness) return false;
+            return true;
         }
 
         private static string CalculateHash(string clientId, string clientSecret, string nonce)

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using PhilipsHue.Service.FulcrumAdapter.Contract;
+using PhilipsHue.Service.FulcrumAdapter.Logic;
 using Q42.HueApi;
 using Q42.HueApi.ColorConverters;
 using Q42.HueApi.Interfaces;
@@ -16,9 +17,6 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
     [RoutePrefix("api/Notifications")]
     public class VisualNotification : ApiController, IVisualNotification
     {
-        private const string GreenColorHex = "0x00FF00";
-        private const string YellowColorHex = "0xFFFF00";
-        private const string RedColorHex = "0xFF0000";
         private readonly IHueClient _hueClient;
         private readonly List<string> _lamps;
 
@@ -39,7 +37,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
         {
             FulcrumAssert.IsNotNull(_hueClient, null, "Must have a valid HueClient.");
             var command = new LightCommand();
-            command.SetColor(new RGBColor(GreenColorHex));
+            command.SetColor(ClientHelper.GetRgbColor(ClientHelper.ColorEnum.Green));
             command.Alert = Alert.Once;
             await _hueClient.SendCommandAsync(command, _lamps);
         }
@@ -51,7 +49,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
         {
             FulcrumAssert.IsNotNull(_hueClient, null, "Must have a valid HueClient.");
             var command = new LightCommand();
-            command.SetColor(new RGBColor(YellowColorHex));
+            command.SetColor(ClientHelper.GetRgbColor(ClientHelper.ColorEnum.Yellow));
             command.Alert = Alert.Once;
             await _hueClient.SendCommandAsync(command, _lamps);
         }
@@ -63,7 +61,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
         {
             FulcrumAssert.IsNotNull(_hueClient, null, "Must have a valid HueClient.");
             var command = new LightCommand();
-            command.SetColor(new RGBColor(RedColorHex));
+            command.SetColor(ClientHelper.GetRgbColor(ClientHelper.ColorEnum.Red));
             command.Alert = Alert.Once;
             await _hueClient.SendCommandAsync(command, _lamps);
         }
