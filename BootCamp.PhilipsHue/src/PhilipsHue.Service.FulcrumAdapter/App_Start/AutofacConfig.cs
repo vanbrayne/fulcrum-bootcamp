@@ -26,8 +26,11 @@ namespace PhilipsHue.Service.FulcrumAdapter
             var builder = new ContainerBuilder();
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            var client = ClientHelper.GetClient();
-            builder.RegisterInstance(client).As<IHueClient>().SingleInstance();
+           // var client = ClientHelper.GetClient();
+            //builder.RegisterInstance(client).As<IHueClient>().SingleInstance();
+            var hueClient = new MockHueClient();
+
+            builder.RegisterInstance(hueClient).As<IHueClient>();
 
             builder.RegisterType<TenantConfigurationValueProvider>().As<ITenantConfigurationValueProvider>().SingleInstance();
             var container = builder.Build();

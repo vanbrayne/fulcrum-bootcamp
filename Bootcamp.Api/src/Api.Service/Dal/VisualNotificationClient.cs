@@ -12,10 +12,22 @@ namespace Api.Service.Dal
         {
         }
 
-        public async Task VisualNotification(string color)
+        public async Task VisualNotificationSuccessAsync(double seconds)
         {
-            var relativeUrl = "api/Users";
-            await RestClient.PostNoResponseContentAsync(relativeUrl, color);
+            var relativeUrl = $"api/Notifications/Success?seconds={seconds}";
+            await RestClient.PostNoResponseContentAsync(relativeUrl);
+        }
+
+        public async Task VisualNotificationWarningAsync(double seconds)
+        {
+            var relativeUrl = $"api/Notifications/Warning?seconds={seconds}";
+            await RestClient.PostNoResponseContentAsync(relativeUrl);
+        }
+
+        public async Task VisualNotificationErrorAsync(double seconds)
+        {
+            var relativeUrl = $"api/Notifications/Error?seconds={seconds}";
+            await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
     }
 }

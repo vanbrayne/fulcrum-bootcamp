@@ -18,13 +18,28 @@ namespace Api.Service.Controllers
         {
             _client = client;
         }
-        [Route("")]
-        [HttpPost]
-        public async Task Post(string color)
-        {
-            ServiceContract.RequireNotNullOrWhitespace(color, nameof(color));
 
-            await _client.VisualNotification(color);
+        [HttpPost]
+        [Route("Success")]
+        public async Task SuccessAsync(double seconds)
+        {
+            await _client.VisualNotificationSuccessAsync(seconds);
+        }
+
+        /// <inheritdoc />
+        [HttpPost]
+        [Route("Warning")]
+        public async Task WarningAsync(double seconds)
+        {
+            await _client.VisualNotificationWarningAsync(seconds);
+        }
+
+        /// <inheritdoc />
+        [HttpPost]
+        [Route("Error")]
+        public async Task ErrorAsync(double seconds)
+        {
+            await _client.VisualNotificationErrorAsync(seconds);
         }
     }
 }

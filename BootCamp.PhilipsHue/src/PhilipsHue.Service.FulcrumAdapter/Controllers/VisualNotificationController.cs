@@ -11,7 +11,7 @@ using Xlent.Lever.Libraries2.Core.Assert;
 
 namespace PhilipsHue.Service.FulcrumAdapter.Controllers
 {
-    /// <inheritdoc cref="IVisualNotification" />
+    /// <inheritdoc cref="IVisualNotificationController" />
     // TODO: Add authentication
     // [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
     [RoutePrefix("api/Notifications")]

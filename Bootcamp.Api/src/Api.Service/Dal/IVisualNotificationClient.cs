@@ -7,6 +7,8 @@ namespace Api.Service.Dal
 {
     public interface IVisualNotificationClient
     {
-        Task VisualNotification(string color);
+        Task VisualNotificationSuccessAsync(double seconds);
+        Task VisualNotificationWarningAsync(double seconds);
+        Task VisualNotificationErrorAsync(double seconds);
     }
 }

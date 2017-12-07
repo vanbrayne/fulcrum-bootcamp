@@ -29,9 +29,9 @@ namespace PhilipsHue.Service.FulcrumAdapter.Logic
             Red
 #pragma warning restore 1591
         };
-        internal const string GreenColorHex = "0x00FF00";
-        internal const string YellowColorHex = "0xFFFF00";
-        internal const string RedColorHex = "0xFF0000";
+        internal const string GreenColorHex = "00FF00";
+        internal const string YellowColorHex = "FFFF00";
+        internal const string RedColorHex = "FF0000";
 
         /// <summary>
         /// Get a Philips Hue remote client
