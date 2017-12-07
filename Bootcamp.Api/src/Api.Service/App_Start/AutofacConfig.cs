@@ -6,9 +6,12 @@ using Autofac;
 using Autofac.Integration.WebApi;
 using Xlent.Lever.Authentication.Sdk;
 using Xlent.Lever.KeyTranslator.RestClients.Facade.Clients;
+using Xlent.Lever.Libraries2.Core.Application;
 using Xlent.Lever.Libraries2.Core.MultiTenant.Model;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 using Xlent.Lever.Libraries2.WebApi.Platform.Authentication;
+using Xlent.Lever.Logger.Sdk;
+using Xlent.Lever.Logger.Sdk.RestClients;
 
 namespace Api.Service
 {
@@ -73,8 +76,11 @@ namespace Api.Service
 
             builder.RegisterInstance(visualNotificationClient).As<IVisualNotificationClient>();
 
+            // Logging
+            var loggerBaseUrl = FulcrumApplication.AppSettings.GetString("Logger.Url", true);
+            var logClient = new LogClient(loggerBaseUrl, tokenRefresher.GetServiceClient());
+            FulcrumApplication.Setup.FullLogger = new FulcrumLogger(logClient);
         }
-
         #endregion
     }
 }

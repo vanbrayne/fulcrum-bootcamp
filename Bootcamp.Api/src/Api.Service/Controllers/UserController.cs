@@ -33,9 +33,10 @@ namespace Api.Service.Controllers
          */
         [Route("")]
         [HttpGet]
-        public async Task<List<User>> GetAll()
+        public async Task<List<User>> GetAll(string type = null)
         {
-            return await _customerMasterClient.GetUsers();
+            // TODO: translate type
+            return await _customerMasterClient.GetUsers(type);
         }
 
         [Route("")]
