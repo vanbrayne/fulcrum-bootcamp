@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace Api.Service.Controllers
 {
-    public class LampController : ApiController
+    public class VisualNotificationController : ApiController
     {
     }
 }
