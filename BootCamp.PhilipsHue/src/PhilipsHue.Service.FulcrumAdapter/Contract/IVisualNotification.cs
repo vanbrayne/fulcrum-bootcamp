@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace PhilipsHue.Service.FulcrumAdapter.Contract
 {
     /// <summary>
-    /// Methods for a <see cref="User"/> resource.
+    /// Methods for visual notification
     /// </summary>
     public interface IVisualNotification
     {

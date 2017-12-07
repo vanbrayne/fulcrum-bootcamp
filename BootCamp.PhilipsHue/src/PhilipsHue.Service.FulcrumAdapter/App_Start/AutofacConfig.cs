@@ -2,10 +2,7 @@
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
-using PhilipsHue.Service.FulcrumAdapter.Contract;
 using Xlent.Lever.Libraries2.Core.MultiTenant.Context;
-using Xlent.Lever.Libraries2.Core.Storage.Logic;
-using Xlent.Lever.Libraries2.Core.Storage.Model;
 
 #pragma warning disable 1591
 
