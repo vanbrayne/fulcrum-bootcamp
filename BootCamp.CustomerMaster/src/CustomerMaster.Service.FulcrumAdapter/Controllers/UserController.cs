@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using CustomerMaster.Service.FulcrumAdapter.Contract;
@@ -8,11 +9,11 @@ using Xlent.Lever.Libraries2.Core.Storage.Model;
 
 namespace CustomerMaster.Service.FulcrumAdapter.Controllers
 {
-    /// <inheritdoc cref="IUserController" />
+    /// <inheritdoc />
     // TODO: Add authentication
     // [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
     [RoutePrefix("api/Users")]
-    public class UserController : ApiController, IUserController
+    public class UserController : ApiController
     {
         private readonly ICrud<User, string> _persistance;
 
@@ -24,7 +25,7 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
         {
             _persistance = persistance;
         }
-        /// <inheritdoc />
+
         [HttpPost]
         [Route("")]
         public async Task<string> Create([FromBody] User user)
@@ -35,7 +36,6 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
             return await _persistance.CreateAsync(user);
         }
 
-        /// <inheritdoc />
         [HttpGet]
         [Route("{id}")]
         public async Task<User> Read(string id)
@@ -45,16 +45,18 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
             return await _persistance.ReadAsync(id);
         }
 
-        /// <inheritdoc />
         [HttpGet]
         [Route("")]
-        public Task<IEnumerable<User>> ReadAll()
+        public Task<IEnumerable<User>> ReadAll(string type = null)
         {
-            var users = new PageEnvelopeEnumerable<User>(offset => _persistance.ReadAllAsync(offset).Result);
-            return Task.FromResult((IEnumerable<User>)users);
+            var users = (IEnumerable<User>)new PageEnvelopeEnumerable<User>(offset => _persistance.ReadAllAsync(offset).Result);
+            if (!string.IsNullOrWhiteSpace(type))
+            {
+                users = users.Where(x => x.Type == type);
+            }
+            return Task.FromResult(users);
         }
 
-        /// <inheritdoc />
         [HttpPut]
         [Route("{id}")]
         public async Task Update(string id, User user)
@@ -65,7 +67,6 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
             await _persistance.UpdateAsync(user.Id, user);
         }
 
-        /// <inheritdoc />
         [HttpDelete]
         [Route("{id}")]
         public async Task Delete(string id)
@@ -75,7 +76,6 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
             await _persistance.DeleteAsync(id);
         }
 
-        /// <inheritdoc />
         [HttpDelete]
         [Route("")]
         public async Task DeleteAll()
