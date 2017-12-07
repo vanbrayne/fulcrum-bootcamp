@@ -137,6 +137,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Contract\User.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="RestClients\BaseClient.cs" />
+    <Compile Include="RestClients\VisualNotificationClient.cs" />
+    <Compile Include="RestClients\IVisualNotificationClient.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -4,6 +4,7 @@ using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 using CustomerMaster.Service.FulcrumAdapter.Contract;
+using CustomerMaster.Service.FulcrumAdapter.Dal;
 using Xlent.Lever.Authentication.Sdk;
 using Xlent.Lever.Libraries2.Core.Application;
 using Xlent.Lever.Libraries2.Core.MultiTenant.Context;
@@ -29,8 +30,6 @@ namespace CustomerMaster.Service.FulcrumAdapter
             builder.RegisterType<MemoryPersistance<User, string>>().As<ICrud<User, string>>().SingleInstance();
 
             builder.RegisterType<TenantConfigurationValueProvider>().As<ITenantConfigurationValueProvider>().SingleInstance();
-            var container = builder.Build();
-            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
             var organization = ConfigurationManager.AppSettings["Organization"];
             var environment = ConfigurationManager.AppSettings["Environment"];
@@ -40,6 +39,11 @@ namespace CustomerMaster.Service.FulcrumAdapter
             var tokenRefresher = RegisterAuthentication(builder, tenant);
 
             RegisterLogging(tokenRefresher);
+
+            RegisterClients(builder, tokenRefresher);
+
+            var container = builder.Build();
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
 
         private static void RegisterLogging(ITokenRefresherWithServiceClient tokenRefresher)
@@ -48,6 +52,14 @@ namespace CustomerMaster.Service.FulcrumAdapter
             var loggerBaseUrl = FulcrumApplication.AppSettings.GetString("Logger.Url", true);
             var logClient = new LogClient(loggerBaseUrl, tokenRefresher.GetServiceClient());
             FulcrumApplication.Setup.FullLogger = new FulcrumLogger(logClient);
+        }
+
+        private static void RegisterClients(ContainerBuilder builder, ITokenRefresherWithServiceClient tokenRefresher)
+        {
+            var visualNotificationClient = new VisualNotificationClient(ConfigurationManager.AppSettings["VisualNotification.Url"],
+                tokenRefresher.GetServiceClient());
+
+            builder.RegisterInstance(visualNotificationClient).As<IVisualNotificationClient>();
         }
 
         private static ITokenRefresherWithServiceClient RegisterAuthentication(ContainerBuilder builder, Tenant tenant)
