@@ -28,8 +28,6 @@ namespace UserStatistics.Service.FulcrumAdapter
             builder.RegisterType<MemoryPersistance<Contract.UserStatistics, string>>().As<ICrud<Contract.UserStatistics, string>>().SingleInstance();
 
             builder.RegisterType<TenantConfigurationValueProvider>().As<ITenantConfigurationValueProvider>().SingleInstance();
-            var container = builder.Build();
-            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
 
             var organization = ConfigurationManager.AppSettings["Organization"];
             var environment = ConfigurationManager.AppSettings["Environment"];
@@ -39,6 +37,9 @@ namespace UserStatistics.Service.FulcrumAdapter
             var tokenRefresher = RegisterAuthentication(builder, tenant);
 
             RegisterLogging(tokenRefresher);
+
+            var container = builder.Build();
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
 
         private static void RegisterLogging(ITokenRefresherWithServiceClient tokenRefresher)
