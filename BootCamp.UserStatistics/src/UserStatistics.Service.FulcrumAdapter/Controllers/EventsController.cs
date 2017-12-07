@@ -6,6 +6,9 @@ using Xlent.Lever.Libraries2.Core.Error.Logic;
 
 namespace UserStatistics.Service.FulcrumAdapter.Controllers
 {
+    /// <summary>
+    /// Receive events
+    /// </summary>
     // TODO: Add authentication
     // [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
     [RoutePrefix("api/Events")]

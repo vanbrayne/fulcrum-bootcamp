@@ -8,82 +8,83 @@ using Q42.HueApi.Interfaces;
 using Q42.HueApi.Models;
 using Q42.HueApi.Models.Groups;
 using Xlent.Lever.Libraries2.Core.Logging;
+#pragma warning disable 1591
 
 namespace PhilipsHue.Service.FulcrumAdapter.Logic
 {
     public class MockHueClient : IHueClient
     {
-        public async Task<IEnumerable<WhiteList>> GetWhiteListAsync()
+        public Task<IEnumerable<WhiteList>> GetWhiteListAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Bridge> GetBridgeAsync()
+        public Task<Bridge> GetBridgeAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> UpdateBridgeConfigAsync(BridgeConfigUpdate update)
+        public Task<HueResults> UpdateBridgeConfigAsync(BridgeConfigUpdate update)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<bool> DeleteWhiteListEntryAsync(string entry)
+        public Task<bool> DeleteWhiteListEntryAsync(string entry)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> SendGroupCommandAsync(ICommandBody command, string @group = "0")
+        public Task<HueResults> SendGroupCommandAsync(ICommandBody command, string @group = "0")
         {
             throw new NotImplementedException();
         }
 
-        public async Task<string> CreateGroupAsync(IEnumerable<string> lights, string name = null, RoomClass? roomCLass = null)
+        public Task<string> CreateGroupAsync(IEnumerable<string> lights, string name = null, RoomClass? roomCLass = null)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> DeleteGroupAsync(string groupId)
+        public Task<HueResults> DeleteGroupAsync(string groupId)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyCollection<Group>> GetGroupsAsync()
+        public Task<IReadOnlyCollection<Group>> GetGroupsAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Group> GetGroupAsync(string id)
+        public Task<Group> GetGroupAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> UpdateGroupAsync(string id, IEnumerable<string> lights, string name = null)
+        public Task<HueResults> UpdateGroupAsync(string id, IEnumerable<string> lights, string name = null)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Light>> GetLightsAsync()
+        public Task<IEnumerable<Light>> GetLightsAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Light> GetLightAsync(string id)
+        public Task<Light> GetLightAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyCollection<DeleteDefaultHueResult>> DeleteLightAsync(string id)
+        public Task<IReadOnlyCollection<DeleteDefaultHueResult>> DeleteLightAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> SetLightNameAsync(string id, string name)
+        public Task<HueResults> SetLightNameAsync(string id, string name)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> SendCommandRawAsync(string command, IEnumerable<string> lightList = null)
+        public Task<HueResults> SendCommandRawAsync(string command, IEnumerable<string> lightList = null)
         {
             throw new NotImplementedException();
         }
@@ -109,188 +110,188 @@ namespace PhilipsHue.Service.FulcrumAdapter.Logic
             return await Task.FromResult((HueResults)null);
         }
 
-        public async Task<HueResults> SearchNewLightsAsync(IEnumerable<string> deviceIds = null)
+        public Task<HueResults> SearchNewLightsAsync(IEnumerable<string> deviceIds = null)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyCollection<Light>> GetNewLightsAsync()
+        public Task<IReadOnlyCollection<Light>> GetNewLightsAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyCollection<Schedule>> GetSchedulesAsync()
+        public Task<IReadOnlyCollection<Schedule>> GetSchedulesAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Schedule> GetScheduleAsync(string id)
+        public Task<Schedule> GetScheduleAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<string> CreateScheduleAsync(Schedule schedule)
+        public Task<string> CreateScheduleAsync(Schedule schedule)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> UpdateScheduleAsync(string id, Schedule schedule)
+        public Task<HueResults> UpdateScheduleAsync(string id, Schedule schedule)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> DeleteScheduleAsync(string id)
+        public Task<HueResults> DeleteScheduleAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyCollection<Scene>> GetScenesAsync()
+        public Task<IReadOnlyCollection<Scene>> GetScenesAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<string> CreateSceneAsync(Scene scene)
+        public Task<string> CreateSceneAsync(Scene scene)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> UpdateSceneAsync(string sceneId, Scene scene)
+        public Task<HueResults> UpdateSceneAsync(string sceneId, Scene scene)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> UpdateSceneAsync(string sceneId, string name, IEnumerable<string> lights, bool? storeLightState = null,
+        public Task<HueResults> UpdateSceneAsync(string sceneId, string name, IEnumerable<string> lights, bool? storeLightState = null,
             TimeSpan? transitionTime = null)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> ModifySceneAsync(string sceneId, string lightId, LightCommand command)
+        public Task<HueResults> ModifySceneAsync(string sceneId, string lightId, LightCommand command)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> RecallSceneAsync(string sceneId, string groupId = "0")
+        public Task<HueResults> RecallSceneAsync(string sceneId, string groupId = "0")
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> DeleteSceneAsync(string sceneId)
+        public Task<HueResults> DeleteSceneAsync(string sceneId)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Scene> GetSceneAsync(string id)
+        public Task<Scene> GetSceneAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyCollection<Rule>> GetRulesAsync()
+        public Task<IReadOnlyCollection<Rule>> GetRulesAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Rule> GetRuleAsync(string id)
+        public Task<Rule> GetRuleAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> DeleteRule(string id)
+        public Task<HueResults> DeleteRule(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<string> CreateRule(Rule rule)
+        public Task<string> CreateRule(Rule rule)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<string> CreateRule(string name, IEnumerable<RuleCondition> conditions, IEnumerable<InternalBridgeCommand> actions)
+        public Task<string> CreateRule(string name, IEnumerable<RuleCondition> conditions, IEnumerable<InternalBridgeCommand> actions)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> UpdateRule(Rule rule)
+        public Task<HueResults> UpdateRule(Rule rule)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> UpdateRule(string id, string name, IEnumerable<RuleCondition> conditions, IEnumerable<InternalBridgeCommand> actions)
+        public Task<HueResults> UpdateRule(string id, string name, IEnumerable<RuleCondition> conditions, IEnumerable<InternalBridgeCommand> actions)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyCollection<Sensor>> GetSensorsAsync()
+        public Task<IReadOnlyCollection<Sensor>> GetSensorsAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<string> CreateSensorAsync(Sensor sensor)
+        public Task<string> CreateSensorAsync(Sensor sensor)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> FindNewSensorsAsync()
+        public Task<HueResults> FindNewSensorsAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyCollection<Sensor>> GetNewSensorsAsync()
+        public Task<IReadOnlyCollection<Sensor>> GetNewSensorsAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Sensor> GetSensorAsync(string id)
+        public Task<Sensor> GetSensorAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> UpdateSensorAsync(string id, string newName)
+        public Task<HueResults> UpdateSensorAsync(string id, string newName)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> ChangeSensorConfigAsync(string id, SensorConfig config)
+        public Task<HueResults> ChangeSensorConfigAsync(string id, SensorConfig config)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> ChangeSensorStateAsync(string id, SensorState state)
+        public Task<HueResults> ChangeSensorStateAsync(string id, SensorState state)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyCollection<DeleteDefaultHueResult>> DeleteSensorAsync(string id)
+        public Task<IReadOnlyCollection<DeleteDefaultHueResult>> DeleteSensorAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> DeleteResourceLinkAsync(string resourceLinkId)
+        public Task<HueResults> DeleteResourceLinkAsync(string resourceLinkId)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IReadOnlyCollection<ResourceLink>> GetResourceLinksAsync()
+        public Task<IReadOnlyCollection<ResourceLink>> GetResourceLinksAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ResourceLink> GetResourceLinkAsync(string id)
+        public Task<ResourceLink> GetResourceLinkAsync(string id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<string> CreateResourceLinkAsync(ResourceLink resourceLink)
+        public Task<string> CreateResourceLinkAsync(ResourceLink resourceLink)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<HueResults> UpdateResourceLinkAsync(string id, ResourceLink resourceLink)
+        public Task<HueResults> UpdateResourceLinkAsync(string id, ResourceLink resourceLink)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<BridgeCapabilities> GetCapabilitiesAsync()
+        public Task<BridgeCapabilities> GetCapabilitiesAsync()
         {
             throw new NotImplementedException();
         }

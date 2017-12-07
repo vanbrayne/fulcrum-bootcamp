@@ -136,7 +136,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AutofacConfig.cs" />
@@ -148,9 +150,9 @@
     <Compile Include="Controllers\UserStatisticsController.cs" />
     <Compile Include="Dal\BaseClient.cs" />
     <Compile Include="Dal\IVisualNotificationClient.cs" />
-    <Compile Include="Dal\IUserClient.cs" />
     <Compile Include="Dal\VisualNotificationClient.cs" />
-    <Compile Include="Dal\UserClient.cs" />
+    <Compile Include="Dal\ICustomerMasterClient.cs" />
+    <Compile Include="Dal\CustomerMasterClient.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

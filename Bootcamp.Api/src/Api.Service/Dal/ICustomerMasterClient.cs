@@ -5,7 +5,7 @@ using Api.Service.Models;
 
 namespace Api.Service.Dal
 {
-    public interface IUserClient
+    public interface ICustomerMasterClient
     {
         Task<List<User>> GetUsers();
         Task<string> AddUser(User user);

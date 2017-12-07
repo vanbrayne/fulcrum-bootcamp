@@ -6,9 +6,9 @@ using System.Collections.Generic;
 
 namespace Api.Service.Dal
 {
-    public class UserClient : BaseClient, IUserClient
+    public class CustomerMasterClient : BaseClient, ICustomerMasterClient
     {
-        public UserClient(string baseUri, ServiceClientCredentials authenticationCredentials) : base(baseUri, authenticationCredentials)
+        public CustomerMasterClient(string baseUri, ServiceClientCredentials authenticationCredentials) : base(baseUri, authenticationCredentials)
         {
         }
 
