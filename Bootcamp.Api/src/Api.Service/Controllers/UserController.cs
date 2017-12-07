@@ -17,7 +17,7 @@ using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 namespace Api.Service.Controllers
 {
     [RoutePrefix("api/Users")]
-    [FulcrumAuthorize(AuthenticationRoleEnum.ExternalSystemUser)]
+    //[FulcrumAuthorize(AuthenticationRoleEnum.ExternalSystemUser)]
     public class UserController : ApiController
     {
         private readonly IUserClient _userClient;

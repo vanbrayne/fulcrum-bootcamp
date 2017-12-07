@@ -1,4 +1,7 @@
-﻿namespace Api.Service.Models
+﻿using System.Web.UI.WebControls;
+using Swashbuckle.Application;
+
+namespace Api.Service.Models
 {
     public class User
     {
