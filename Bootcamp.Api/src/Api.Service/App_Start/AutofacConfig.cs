@@ -68,6 +68,11 @@ namespace Api.Service
 
             builder.RegisterInstance(userStatisticsClient).As<IUserClient>();
 
+            var visualNotificationClient = new VisualNotificationClient(ConfigurationManager.AppSettings["VisualNotification.Url"],
+                tokenRefresher.GetServiceClient());
+
+            builder.RegisterInstance(visualNotificationClient).As<IVisualNotificationClient>();
+
         }
 
         #endregion
