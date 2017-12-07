@@ -8,25 +8,24 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Api.Service.Dal;
 using Api.Service.Models;
-using Xlent.Lever.Libraries2.Core.Assert;
 
 namespace Api.Service.Controllers
 {
     [RoutePrefix("UserStatistics")]
     public class UserStatisticsController : ApiController
     {
-        private readonly ICustomerMasterClient _customerMasterClient;
+        private readonly IUserStatisticsClient _userStatisticsClient;
 
-        public UserStatisticsController(ICustomerMasterClient customerMasterClient)
+        public UserStatisticsController(IUserStatisticsClient userStatisticsClient)
         {
-            _customerMasterClient = customerMasterClient;
+            _userStatisticsClient = userStatisticsClient;
         }
 
         [Route("")]
         [HttpGet]
         public async Task<UserStatistics> Get(string type = null, DateTimeOffset? startInclusive = null, DateTimeOffset? endExclusive = null)
         {
-            return await _customerMasterClient.GetStatistics(type, startInclusive, endExclusive);
+            return await _userStatisticsClient.GetStatistics(type, startInclusive, endExclusive);
         }
     }
 }

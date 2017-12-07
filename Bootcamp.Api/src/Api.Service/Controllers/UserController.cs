@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Api.Service.Dal;
 using Api.Service.Models;
+using Xlent.Lever.KeyTranslator.RestClients.Facade.Clients;
+using Xlent.Lever.KeyTranslator.Sdk;
 using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Error.Logic;
 
@@ -13,10 +15,12 @@ namespace Api.Service.Controllers
     public class UserController : ApiController
     {
         private readonly ICustomerMasterClient _customerMasterClient;
+        private readonly BatchTranslate _batchTranslate;
 
-        public UserController(ICustomerMasterClient customerMasterClient)
+        public UserController(ICustomerMasterClient customerMasterClient, ITranslateClient translateClient)
         {
             _customerMasterClient = customerMasterClient;
+            _batchTranslate = new BatchTranslate(translateClient, "mobile-app", "customer-master");
         }
 
         [Route("{id}")]
@@ -33,9 +37,14 @@ namespace Api.Service.Controllers
          */
         [Route("")]
         [HttpGet]
-        public async Task<List<User>> GetAll(string type = null)
+        public async Task<List<User>> GetAllAsync(string type = null)
         {
-            // TODO: translate type
+            if (!string.IsNullOrWhiteSpace(type))
+            {
+                await _batchTranslate
+                    .Add("user.type", type, translatedValue => type = translatedValue)
+                    .ExecuteAsync();
+            }
             return await _customerMasterClient.GetUsers(type);
         }
 

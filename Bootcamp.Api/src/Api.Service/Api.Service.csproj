@@ -155,6 +155,8 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserStatisticsController.cs" />
     <Compile Include="Dal\BaseClient.cs" />
+    <Compile Include="Dal\UserStatisticsClient.cs" />
+    <Compile Include="Dal\IUserStatisticsClient.cs" />
     <Compile Include="Dal\IVisualNotificationClient.cs" />
     <Compile Include="Dal\VisualNotificationClient.cs" />
     <Compile Include="Dal\ICustomerMasterClient.cs" />

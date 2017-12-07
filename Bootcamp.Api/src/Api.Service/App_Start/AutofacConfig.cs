@@ -54,10 +54,10 @@ namespace Api.Service
 
             builder.RegisterInstance(customerMasterClient).As<ICustomerMasterClient>();
 
-            var userStatisticsClient = new CustomerMasterClient(ConfigurationManager.AppSettings["UserStatistics.Url"],
+            var userStatisticsClient = new UserStatisticsClient(ConfigurationManager.AppSettings["UserStatistics.Url"],
                 tokenRefresher.GetServiceClient());
 
-            builder.RegisterInstance(userStatisticsClient).As<ICustomerMasterClient>();
+            builder.RegisterInstance(userStatisticsClient).As<IUserStatisticsClient>();
 
             var visualNotificationClient = new VisualNotificationClient(ConfigurationManager.AppSettings["VisualNotification.Url"],
                 tokenRefresher.GetServiceClient());
