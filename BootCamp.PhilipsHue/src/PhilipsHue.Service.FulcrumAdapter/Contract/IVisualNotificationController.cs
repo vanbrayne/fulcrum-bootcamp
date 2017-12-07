@@ -10,16 +10,16 @@ namespace PhilipsHue.Service.FulcrumAdapter.Contract
         /// <summary>
         /// Visually notify that we have had a success
         /// </summary>
-        Task SuccessAsync(double? seconds = null);
+        Task SuccessAsync();
 
         /// <summary>
         /// Visually notify a warning
         /// </summary>
-        Task WarningAsync(double? seconds = null);
+        Task WarningAsync();
 
         /// <summary>
         /// Visually notify an error
         /// </summary>
-        Task ErrorAsync(double? seconds = null);
+        Task ErrorAsync();
     }
 }
