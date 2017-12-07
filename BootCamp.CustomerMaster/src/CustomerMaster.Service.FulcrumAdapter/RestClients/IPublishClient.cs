@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
-namespace UserStatistics.Service.FulcrumAdapter.RestClient
+namespace CustomerMaster.Service.FulcrumAdapter.RestClients
 {
     /// <summary>
     /// Publish business events

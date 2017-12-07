@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
+using UserStatistics.Service.FulcrumAdapter.RestClients;
 using Xlent.Lever.Authentication.Sdk;
 using Xlent.Lever.Libraries2.Core.Application;
 using Xlent.Lever.Libraries2.Core.MultiTenant.Context;
@@ -36,6 +37,7 @@ namespace UserStatistics.Service.FulcrumAdapter
 
             var tokenRefresher = RegisterAuthentication(builder, tenant);
 
+            RegisterClients(builder, tokenRefresher);
             RegisterLogging(tokenRefresher);
 
             var container = builder.Build();
@@ -48,6 +50,14 @@ namespace UserStatistics.Service.FulcrumAdapter
             var loggerBaseUrl = FulcrumApplication.AppSettings.GetString("Logger.Url", true);
             var logClient = new LogClient(loggerBaseUrl, tokenRefresher.GetServiceClient());
             FulcrumApplication.Setup.FullLogger = new FulcrumLogger(logClient);
+        }
+
+        private static void RegisterClients(ContainerBuilder builder, ITokenRefresherWithServiceClient tokenRefresher)
+        {
+            var notificationClient = new VisualNotificationClient(ConfigurationManager.AppSettings["VisualNotification.Url"],
+                tokenRefresher.GetServiceClient());
+
+            builder.RegisterInstance(notificationClient).As<IVisualNotificationClient>();
         }
 
         private static ITokenRefresherWithServiceClient RegisterAuthentication(ContainerBuilder builder, Tenant tenant)

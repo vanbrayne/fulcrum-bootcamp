@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Web;
 using Microsoft.Rest;
 using Newtonsoft.Json.Linq;
 
-namespace UserStatistics.Service.FulcrumAdapter.RestClient
+namespace CustomerMaster.Service.FulcrumAdapter.RestClients
 {
     /// <summary>
     /// Client for publishing events.

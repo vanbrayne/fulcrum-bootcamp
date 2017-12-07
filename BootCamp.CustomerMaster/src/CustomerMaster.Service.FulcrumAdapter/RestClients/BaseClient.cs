@@ -2,7 +2,7 @@
 using Microsoft.Rest;
 using Xlent.Lever.Libraries2.WebApi.RestClientHelper;
 
-namespace CustomerMaster.Service.FulcrumAdapter.Dal
+namespace CustomerMaster.Service.FulcrumAdapter.RestClients
 {
     /// <summary>
     /// Lever BaseClient

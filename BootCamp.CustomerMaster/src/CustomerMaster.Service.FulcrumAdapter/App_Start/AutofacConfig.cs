@@ -4,7 +4,7 @@ using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
 using CustomerMaster.Service.FulcrumAdapter.Contract;
-using CustomerMaster.Service.FulcrumAdapter.Dal;
+using CustomerMaster.Service.FulcrumAdapter.RestClients;
 using Xlent.Lever.Authentication.Sdk;
 using Xlent.Lever.Libraries2.Core.Application;
 using Xlent.Lever.Libraries2.Core.MultiTenant.Context;
@@ -56,10 +56,10 @@ namespace CustomerMaster.Service.FulcrumAdapter
 
         private static void RegisterClients(ContainerBuilder builder, ITokenRefresherWithServiceClient tokenRefresher)
         {
-            var visualNotificationClient = new VisualNotificationClient(ConfigurationManager.AppSettings["VisualNotification.Url"],
+            var publishClient = new PublishClient(ConfigurationManager.AppSettings["VisualNotification.Url"],
                 tokenRefresher.GetServiceClient());
 
-            builder.RegisterInstance(visualNotificationClient).As<IVisualNotificationClient>();
+            builder.RegisterInstance(publishClient).As<IPublishClient>();
         }
 
         private static ITokenRefresherWithServiceClient RegisterAuthentication(ContainerBuilder builder, Tenant tenant)
