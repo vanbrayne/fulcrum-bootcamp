@@ -1,7 +1,7 @@
 ﻿using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Storage.Model;
 
-namespace UserStatistics.Service.FulcrumAdapter.Contract
+namespace CustomerMaster.Service.FulcrumAdapter.Contract
 {
     /// <summary>
     /// A user

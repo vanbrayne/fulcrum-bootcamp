@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9290A9DB-6A80-4B61-9910-5FDDFF71BEB2}</ProjectGuid>
+    <ProjectGuid>{4EE01292-B192-4087-B35C-688CF400009F}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Api.Service</RootNamespace>
-    <AssemblyName>Api.Service</AssemblyName>
+    <RootNamespace>CustomerMaster.Service.FulcrumAdapter</RootNamespace>
+    <AssemblyName>CustomerMaster.Service.FulcrumAdapter</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\CustomerMaster.Service.FulcrumAdapter.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -101,26 +102,12 @@
     <Reference Include="Xlent.Lever.Authentication.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xlent.Lever.Authentication.Sdk.4.2.0\lib\net46\Xlent.Lever.Authentication.Sdk.dll</HintPath>
     </Reference>
-    <Reference Include="Xlent.Lever.BusinessEvents.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xlent.Lever.BusinessEvents.Sdk.3.0.5\lib\Xlent.Lever.BusinessEvents.Sdk\Xlent.Lever.BusinessEvents.Sdk.dll</HintPath>
-    </Reference>
-    <Reference Include="Xlent.Lever.Configurations.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xlent.Lever.Configurations.Sdk.4.0.10\lib\Configurations.Sdk\Xlent.Lever.Configurations.Sdk.dll</HintPath>
-    </Reference>
-    <Reference Include="Xlent.Lever.KeyTranslator.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xlent.Lever.KeyTranslator.Sdk.3.0.8\lib\KeyTranslator.Sdk\Xlent.Lever.KeyTranslator.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Xlent.Lever.KeyTranslator.RestClients, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xlent.Lever.KeyTranslator.Sdk.3.0.8\lib\KeyTranslator.Sdk\Xlent.Lever.KeyTranslator.RestClients.dll</HintPath>
-    </Reference>
-    <Reference Include="Xlent.Lever.KeyTranslator.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xlent.Lever.KeyTranslator.Sdk.3.0.8\lib\KeyTranslator.Sdk\Xlent.Lever.KeyTranslator.Sdk.dll</HintPath>
-    </Reference>
     <Reference Include="Xlent.Lever.Libraries2.Core.NetFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xlent.Lever.Libraries2.Core.NetFramework.1.15.8\lib\net46\Xlent.Lever.Libraries2.Core.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Xlent.Lever.Libraries2.WebApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Xlent.Lever.Libraries2.WebApi">
       <HintPath>..\..\packages\Xlent.Lever.Libraries2.WebApi.4.3.11\lib\net46\Xlent.Lever.Libraries2.WebApi.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -142,16 +129,12 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\BusinessEventsController.cs" />
+    <Compile Include="Contract\IUserController.cs" />
+    <Compile Include="Contract\User.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Dal\BaseClient.cs" />
-    <Compile Include="Dal\IUserClient.cs" />
-    <Compile Include="Dal\UserClient.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helper\SchemaExamples.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -165,7 +148,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -179,9 +164,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50635</DevelopmentServerPort>
+          <DevelopmentServerPort>51752</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/Api.Service</IISUrl>
+          <IISUrl>http://localhost/CustomerMaster.Service.FulcrumAdapter</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
