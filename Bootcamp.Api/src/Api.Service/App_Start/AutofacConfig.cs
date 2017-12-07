@@ -8,6 +8,7 @@ using Xlent.Lever.Authentication.Sdk;
 using Xlent.Lever.KeyTranslator.RestClients.Facade.Clients;
 using Xlent.Lever.Libraries2.Core.MultiTenant.Model;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
+using Xlent.Lever.Libraries2.WebApi.Platform.Authentication;
 
 namespace Api.Service
 {
@@ -35,6 +36,7 @@ namespace Api.Service
             var organization = ConfigurationManager.AppSettings["Organization"];
             var environment = ConfigurationManager.AppSettings["Environment"];
             var tenant = new Tenant(organization, environment);
+            builder.RegisterInstance(tenant).As<ITenant>();
 
             var authenticationUrl = ConfigurationManager.AppSettings["Authentication.Url"];
             var authenticationClientId = ConfigurationManager.AppSettings["Authentication.ClientId"];
@@ -50,6 +52,7 @@ namespace Api.Service
 
            var tokenRefresher = AuthenticationManager.CreateTokenRefresher(tenant, authenticationUrl,
                 authServiceCredentials, authTokenCredentials);
+            builder.RegisterInstance(tokenRefresher).As<ITokenRefresherWithServiceClient>();
 
             var translateClient = new TranslateClient(ConfigurationManager.AppSettings["KeyTranslator.Url"], tenant,
                 tokenRefresher.GetServiceClient());
