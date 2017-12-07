@@ -143,6 +143,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserStatisticsController.cs" />
     <Compile Include="Dal\BaseClient.cs" />
     <Compile Include="Dal\IUserClient.cs" />
     <Compile Include="Dal\UserClient.cs" />

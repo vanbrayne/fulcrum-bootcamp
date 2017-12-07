@@ -15,7 +15,7 @@ namespace UserStatistics.Service.FulcrumAdapter.Controllers
         /// <inheritdoc />
         [HttpGet]
         [Route("")]
-        public Task<Contract.UserStatistics> Read(DateTimeOffset? startInclusive, DateTimeOffset? endInclusive)
+        public Task<Contract.UserStatistics> Read(string Type = null, DateTimeOffset? startInclusive = null, DateTimeOffset? endExclusive = null)
         {
             throw new FulcrumNotImplementedException();
         }
