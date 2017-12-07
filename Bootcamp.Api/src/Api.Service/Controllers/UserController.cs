@@ -15,12 +15,12 @@ namespace Api.Service.Controllers
     public class UserController : ApiController
     {
         private readonly ICustomerMasterClient _customerMasterClient;
-        private readonly BatchTranslate _batchTranslate;
+        private readonly ITranslateClient _translateClient;
 
         public UserController(ICustomerMasterClient customerMasterClient, ITranslateClient translateClient)
         {
             _customerMasterClient = customerMasterClient;
-            _batchTranslate = new BatchTranslate(translateClient, "mobile-app", "customer-master");
+            _translateClient = translateClient;
         }
 
         [Route("{id}")]
@@ -41,11 +41,24 @@ namespace Api.Service.Controllers
         {
             if (!string.IsNullOrWhiteSpace(type))
             {
-                await _batchTranslate
+                await new BatchTranslate(_translateClient, "mobile-app", "customer-master")
                     .Add("user.type", type, translatedValue => type = translatedValue)
                     .ExecuteAsync();
             }
-            return await _customerMasterClient.GetUsers(type);
+
+            var result = await _customerMasterClient.GetUsers(type);
+
+            if (!string.IsNullOrWhiteSpace(type))
+            {
+                var translateUp = new BatchTranslate(_translateClient, "customer-master", "mobile-app");
+                foreach (var user in result)
+                {
+                    translateUp.Add("user.type", type, translatedValue => user.Type = translatedValue);
+                }
+                await translateUp.ExecuteAsync();
+            }
+
+            return result;
         }
 
         [Route("")]
@@ -59,10 +72,14 @@ namespace Api.Service.Controllers
 
         [Route("{id}")]
         [HttpPut]
-        public User Put(string id, User user)
+        public async Task<User> PutAsync(string id, User user)
         {
             ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
             ServiceContract.RequireNotNull(user, nameof(user));
+
+            await new BatchTranslate(_translateClient, "mobile-app", "customer-master")
+                .Add("user.type", user.Type, translatedValue => user.Type = translatedValue)
+                .ExecuteAsync();
 
             throw new FulcrumNotImplementedException();
         }
