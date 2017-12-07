@@ -1,7 +1,10 @@
+using System;
 using System.Web.Http;
 using WebActivatorEx;
 using Api.Service;
+using Api.Service.Helper;
 using Swashbuckle.Application;
+using Swashbuckle.Swagger;
 
 namespace Api.Service
 {
@@ -31,6 +34,7 @@ namespace Api.Service
                         // additional fields by chaining methods off SingleApiVersion.
                         //
                         c.SingleApiVersion("v1", "Api.Service");
+                        c.SchemaFilter<SchemaExamples>();
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //
@@ -59,7 +63,7 @@ namespace Api.Service
                         //c.BasicAuth("basic")
                         //    .Description("Basic HTTP Authentication");
                         //
-						// NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
                         //c.ApiKey("apiKey")
                         //    .Description("API Key Authentication")
                         //    .Name("apiKey")
