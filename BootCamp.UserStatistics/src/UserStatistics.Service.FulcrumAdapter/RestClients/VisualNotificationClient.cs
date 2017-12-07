@@ -1,8 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Rest;
+using UserStatistics.Service.FulcrumAdapter.RestClient;
+
 #pragma warning disable 1591
 
-namespace UserStatistics.Service.FulcrumAdapter.RestClient
+namespace UserStatistics.Service.FulcrumAdapter.RestClients
 {
     public class VisualNotificationClient : BaseClient, IVisualNotificationClient
     {
@@ -10,21 +12,21 @@ namespace UserStatistics.Service.FulcrumAdapter.RestClient
         {
         }
 
-        public async Task VisualNotificationSuccessAsync(double? seconds = null)
+        public async Task VisualNotificationSuccessAsync()
         {
-            var relativeUrl = $"api/Notifications/Success?seconds={seconds}";
+            var relativeUrl = $"api/Notifications/Success";
             await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
 
-        public async Task VisualNotificationWarningAsync(double? seconds = null)
+        public async Task VisualNotificationWarningAsync()
         {
-            var relativeUrl = $"api/Notifications/Warning?seconds={seconds}";
+            var relativeUrl = $"api/Notifications/Warning";
             await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
 
-        public async Task VisualNotificationErrorAsync(double? seconds = null)
+        public async Task VisualNotificationErrorAsync()
         {
-            var relativeUrl = $"api/Notifications/Error?seconds={seconds}";
+            var relativeUrl = $"api/Notifications/Error";
             await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
     }
