@@ -101,6 +101,9 @@
     <Reference Include="Xlent.Lever.Authentication.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xlent.Lever.Authentication.Sdk.4.2.0\lib\net46\Xlent.Lever.Authentication.Sdk.dll</HintPath>
     </Reference>
+    <Reference Include="Xlent.Lever.BusinessEvents.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xlent.Lever.BusinessEvents.Sdk.3.0.5\lib\Xlent.Lever.BusinessEvents.Sdk\Xlent.Lever.BusinessEvents.Sdk.dll</HintPath>
+    </Reference>
     <Reference Include="Xlent.Lever.Configurations.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xlent.Lever.Configurations.Sdk.4.0.10\lib\Configurations.Sdk\Xlent.Lever.Configurations.Sdk.dll</HintPath>
     </Reference>
