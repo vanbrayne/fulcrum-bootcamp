@@ -15,7 +15,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
     // TODO: Add authentication
     // [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
     [RoutePrefix("api/Notifications")]
-    public class VisualNotification : ApiController, IVisualNotification
+    public class VisualNotificationController : ApiController, IVisualNotificationController
     {
         private readonly IHueClient _hueClient;
         private readonly List<string> _lamps;
@@ -24,7 +24,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
         /// Constructor
         /// </summary>
         /// <param name="hueClient">The client to use for communication with the Philips Hue</param>
-        public VisualNotification(IHueClient hueClient)
+        public VisualNotificationController(IHueClient hueClient)
         {
             _hueClient = hueClient;
             _lamps = new List<string> { "1" };

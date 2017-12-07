@@ -5,7 +5,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Contract
     /// <summary>
     /// Methods for visual notification
     /// </summary>
-    public interface IVisualNotification
+    public interface IVisualNotificationController
     {
         /// <summary>
         /// Visually notify that we have had a success
