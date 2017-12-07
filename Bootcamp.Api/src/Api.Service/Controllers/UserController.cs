@@ -9,11 +9,10 @@ using Xlent.Lever.Libraries2.Core.Error.Logic;
 namespace Api.Service.Controllers
 {
     [RoutePrefix("api/Users")]
-    //[FulcrumAuthorize(AuthenticationRoleEnum.ExternalSystemUser)]
+    // TODO: enable [FulcrumAuthorize(AuthenticationRoleEnum.ExternalSystemUser)]
     public class UserController : ApiController
     {
         private readonly IUserClient _userClient;
-        //private ServiceClientCre
 
         public UserController(IUserClient userClient)
         {
@@ -24,6 +23,8 @@ namespace Api.Service.Controllers
         [HttpGet]
         public User Get(string id)
         {
+            ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
+
             throw new FulcrumNotImplementedException();
         }
 
@@ -50,6 +51,9 @@ namespace Api.Service.Controllers
         [HttpPut]
         public User Put(string id, User user)
         {
+            ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
+            ServiceContract.RequireNotNull(user, nameof(user));
+
             throw new FulcrumNotImplementedException();
         }
 
@@ -57,6 +61,8 @@ namespace Api.Service.Controllers
         [HttpDelete]
         public User DeleteOne(string id)
         {
+            ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
+
             throw new FulcrumNotImplementedException();
         }
 
@@ -69,8 +75,5 @@ namespace Api.Service.Controllers
         {
             await _userClient.DeleteUsers();
         }
-
-
-
     }
 }
