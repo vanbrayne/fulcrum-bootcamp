@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Api.Service.Models;
 using Microsoft.Rest;
 using System.Collections.Generic;
@@ -27,6 +28,19 @@ namespace Api.Service.Dal
         {
             var relativeUrl = "api/Users";
             return await RestClient.PostAsync<string, User>(relativeUrl, user);
+        }
+
+        public async Task<UserStatistics> GetStatistics(string type = null, DateTimeOffset? startInclusive = null, DateTimeOffset? endExclusive = null)
+        {
+            var relativeUrl = $"api/UserStatistics?";
+            if (startInclusive != null)
+                relativeUrl += $"&startInclusive={startInclusive}";
+            if(endExclusive != null)
+                relativeUrl += $"&endExclusive={endExclusive}";
+            if (type != null)
+                relativeUrl += $"&type={type}";
+
+            return await RestClient.GetAsync<UserStatistics>(relativeUrl);
         }
     }
 }

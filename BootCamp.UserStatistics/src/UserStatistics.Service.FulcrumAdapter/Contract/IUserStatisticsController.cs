@@ -9,9 +9,9 @@ namespace UserStatistics.Service.FulcrumAdapter.Contract
     public interface IUserStatisticsController
     {
         /// <summary>
-        /// Read the user with id <paramref name="id"/>.
+        /// Read number of created users of optional type.
         /// </summary>
-        /// <returns>The </returns>
-        Task<UserStatistics> Read(DateTimeOffset? startInclusive, DateTimeOffset? endInclusive);
+        /// <returns>UserStatistics </returns>
+        Task<UserStatistics> Read(string type, DateTimeOffset? startInclusive, DateTimeOffset? endExclusive);
     }
 }

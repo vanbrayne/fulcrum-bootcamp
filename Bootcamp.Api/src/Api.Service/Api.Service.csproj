@@ -144,15 +144,20 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\VisualNotificationController.cs" />
     <Compile Include="Controllers\BusinessEventsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserStatisticsController.cs" />
     <Compile Include="Dal\BaseClient.cs" />
+    <Compile Include="Dal\IVisualNotificationClient.cs" />
+    <Compile Include="Dal\VisualNotificationClient.cs" />
     <Compile Include="Dal\ICustomerMasterClient.cs" />
     <Compile Include="Dal\CustomerMasterClient.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\SchemaExamples.cs" />
+    <Compile Include="Models\UserStatistics.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

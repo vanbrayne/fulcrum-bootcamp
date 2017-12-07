@@ -58,10 +58,20 @@ namespace Api.Service
                 tokenRefresher.GetServiceClient());
             builder.RegisterInstance(translateClient).As<ITranslateClient>();
 
-            var customerMasterClient = new CustomerMasterClient(ConfigurationManager.AppSettings["UserCapability.Url"],
+            var customerMasterClient = new CustomerMasterClient(ConfigurationManager.AppSettings["CustomerMaster.Url"],
                 tokenRefresher.GetServiceClient());
 
             builder.RegisterInstance(customerMasterClient).As<ICustomerMasterClient>();
+
+            var userStatisticsClient = new UserClient(ConfigurationManager.AppSettings["UserStatistics.Url"],
+                tokenRefresher.GetServiceClient());
+
+            builder.RegisterInstance(userStatisticsClient).As<IUserClient>();
+
+            var visualNotificationClient = new VisualNotificationClient(ConfigurationManager.AppSettings["VisualNotification.Url"],
+                tokenRefresher.GetServiceClient());
+
+            builder.RegisterInstance(visualNotificationClient).As<IVisualNotificationClient>();
 
         }
 
