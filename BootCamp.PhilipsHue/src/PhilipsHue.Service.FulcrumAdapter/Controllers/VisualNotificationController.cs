@@ -34,7 +34,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
         /// <inheritdoc />
         [HttpPost]
         [Route("Success")]
-        public async Task SuccessAsync(double? seconds = null)
+        public async Task SuccessAsync()
         {
             FulcrumAssert.IsNotNull(_hueClient, null, "Must have a valid HueClient.");
             var command = new LightCommand();
@@ -46,7 +46,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
         /// <inheritdoc />
         [HttpPost]
         [Route("Warning")]
-        public async Task WarningAsync(double? seconds = null)
+        public async Task WarningAsync()
         {
             FulcrumAssert.IsNotNull(_hueClient, null, "Must have a valid HueClient.");
             var command = new LightCommand();
@@ -58,7 +58,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
         /// <inheritdoc />
         [HttpPost]
         [Route("Error")]
-        public async Task ErrorAsync(double? seconds = null)
+        public async Task ErrorAsync()
         {
             FulcrumAssert.IsNotNull(_hueClient, null, "Must have a valid HueClient.");
             var command = new LightCommand();
