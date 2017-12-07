@@ -58,10 +58,10 @@ namespace Api.Service
                 tokenRefresher.GetServiceClient());
             builder.RegisterInstance(translateClient).As<ITranslateClient>();
 
-            var userClient = new UserClient(ConfigurationManager.AppSettings["UserCapability.Url"],
+            var customerMasterClient = new CustomerMasterClient(ConfigurationManager.AppSettings["UserCapability.Url"],
                 tokenRefresher.GetServiceClient());
 
-            builder.RegisterInstance(userClient).As<IUserClient>();
+            builder.RegisterInstance(customerMasterClient).As<ICustomerMasterClient>();
 
         }
 

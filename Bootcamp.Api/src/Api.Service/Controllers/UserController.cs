@@ -12,11 +12,11 @@ namespace Api.Service.Controllers
     // TODO: enable [FulcrumAuthorize(AuthenticationRoleEnum.ExternalSystemUser)]
     public class UserController : ApiController
     {
-        private readonly IUserClient _userClient;
+        private readonly ICustomerMasterClient _customerMasterClient;
 
-        public UserController(IUserClient userClient)
+        public UserController(ICustomerMasterClient customerMasterClient)
         {
-            _userClient = userClient;
+            _customerMasterClient = customerMasterClient;
         }
 
         [Route("{id}")]
@@ -35,7 +35,7 @@ namespace Api.Service.Controllers
         [HttpGet]
         public async Task<List<User>> GetAll()
         {
-            return await _userClient.GetUsers();
+            return await _customerMasterClient.GetUsers();
         }
 
         [Route("")]
@@ -44,7 +44,7 @@ namespace Api.Service.Controllers
         {
             ServiceContract.RequireNotNull(user, nameof(user));
 
-            return await _userClient.AddUser(user);
+            return await _customerMasterClient.AddUser(user);
         }
 
         [Route("{id}")]
@@ -73,7 +73,7 @@ namespace Api.Service.Controllers
         [HttpDelete]
         public async Task DeleteAll()
         {
-            await _userClient.DeleteUsers();
+            await _customerMasterClient.DeleteUsers();
         }
     }
 }
