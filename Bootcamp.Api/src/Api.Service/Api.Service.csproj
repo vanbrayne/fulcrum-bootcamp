@@ -142,6 +142,7 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\LampController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserStatisticsController.cs" />
     <Compile Include="Dal\BaseClient.cs" />
@@ -151,6 +152,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\SchemaExamples.cs" />
+    <Compile Include="Models\UserStatistics.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
