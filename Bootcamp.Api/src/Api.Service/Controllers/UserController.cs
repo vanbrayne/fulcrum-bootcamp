@@ -48,15 +48,12 @@ namespace Api.Service.Controllers
 
             var result = await _customerMasterClient.GetUsers(type);
 
-            if (!string.IsNullOrWhiteSpace(type))
+            var translateUp = new BatchTranslate(_translateClient, "customer-master", "mobile-app");
+            foreach (var user in result)
             {
-                var translateUp = new BatchTranslate(_translateClient, "customer-master", "mobile-app");
-                foreach (var user in result)
-                {
-                    translateUp.Add("user.type", type, translatedValue => user.Type = translatedValue);
-                }
-                await translateUp.ExecuteAsync();
+                translateUp.Add("user.type", user.Type, translatedValue => user.Type = translatedValue);
             }
+            await translateUp.ExecuteAsync();
 
             return result;
         }
