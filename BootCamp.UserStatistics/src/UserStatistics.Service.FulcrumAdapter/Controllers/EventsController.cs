@@ -23,11 +23,13 @@ namespace UserStatistics.Service.FulcrumAdapter.Controllers
         /// <exception cref="FulcrumNotImplementedException"></exception>
         [HttpPost]
         [Route("User/Created/1")]
-        public Task UserCreatedAsync(UserCreatedEvent eventBody)
+        public async Task UserCreatedAsync(UserCreatedEvent eventBody)
         {
             ServiceContract.RequireNotNull(eventBody, nameof(eventBody));
 
-            throw new FulcrumNotImplementedException("The event User.Created version 1 is not yet supported.");
+            // TODO: implement
+
+            await Task.Yield();
         }
 
         /// <summary>
