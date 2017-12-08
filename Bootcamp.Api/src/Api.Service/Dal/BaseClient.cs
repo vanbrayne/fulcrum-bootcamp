@@ -16,7 +16,7 @@ namespace Api.Service.Dal
 
             return $"{baseUri}";
         }
-
+        
         protected BaseClient(string baseUri, ServiceClientCredentials authenticationCredentials)
         {
             RestClient = new RestClient(GetUriStart(baseUri), authenticationCredentials);
