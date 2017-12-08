@@ -4,7 +4,7 @@ using Api.Service.Models;
 
 namespace Api.Service.Dal
 {
-    public interface ICustomerMasterClient
+    public interface ICustomerMasterClient : IBaseClient
     {
         Task<List<User>> GetUsers(string type = null);
         Task<string> AddUser(User user);

@@ -2,7 +2,7 @@
 
 namespace Api.Service.Dal
 {
-    public interface IVisualNotificationClient
+    public interface IVisualNotificationClient : IBaseClient
     {
         Task VisualNotificationSuccessAsync();
         Task VisualNotificationWarningAsync();

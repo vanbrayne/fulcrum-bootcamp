@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Api.Service.Dal;
 using Xlent.Lever.KeyTranslator.RestClients.Facade.Clients;
 using Xlent.Lever.KeyTranslator.Sdk;
 using Xlent.Lever.Libraries2.Core.Assert;
@@ -20,12 +21,18 @@ namespace Api.Service.Controllers
         private readonly ITenant _tenant;
         private readonly ITranslateClient _translateClient;
         private readonly ITokenRefresherWithServiceClient _tokenRefresher;
+        private readonly IVisualNotificationClient _visualNotificationClient;
+        private readonly ICustomerMasterClient _customerMasterClient;
+        private readonly IUserStatisticsClient _userStatisticsClient;
 
-        public ServiceMetasController(ITenant tenant, ITranslateClient translateClient, ITokenRefresherWithServiceClient tokenRefresher)
+        public ServiceMetasController(ITenant tenant, ITranslateClient translateClient, ITokenRefresherWithServiceClient tokenRefresher, IVisualNotificationClient visualNotificationClient, ICustomerMasterClient customerMasterClient, IUserStatisticsClient userStatisticsClient)
         {
             _tenant = tenant;
             _translateClient = translateClient;
             _tokenRefresher = tokenRefresher;
+            _visualNotificationClient = visualNotificationClient;
+            _customerMasterClient = customerMasterClient;
+            _userStatisticsClient = userStatisticsClient;
         }
 
         [Route("ServiceHealth")]
@@ -39,10 +46,34 @@ namespace Api.Service.Controllers
             aggregator.AddHealthResponse(await CheckAuthentication());
             aggregator.AddHealthResponse(await CheckLogging());
             aggregator.AddHealthResponse(await CheckValueTranslation());
-            //CheckVisualNotificationCapability();
-            //CheckCustomerMasterCapability();
-            //CheckUserStatisticsCapability();
+            aggregator.AddHealthResponse(await CheckVisualNotificationCapability());
+            aggregator.AddHealthResponse(await CheckCustomerMasterCapability());
+            aggregator.AddHealthResponse(await CheckUserStatisticsCapability());
             return aggregator.GetAggregatedHealthResponse();
+        }
+
+        private async Task<HealthResponse> CheckWithBaseClient(string resourceName, IBaseClient baseClient)
+        {
+            return await ChackAction(resourceName, async () =>
+            {
+                var response = await baseClient.GetServiceHealthAsync();
+                if (response.Status == null) throw new Exception("Unexpected response");
+                if ((HealthResponse.StatusEnum)response.Status != HealthResponse.StatusEnum.Ok) throw new Exception($"Status is not ok. Was '{response.Status}");
+            });
+        }
+        private async Task<HealthResponse> CheckUserStatisticsCapability()
+        {
+            return await CheckWithBaseClient("User Statistics Capability", _userStatisticsClient);
+        }
+
+        private async Task<HealthResponse> CheckCustomerMasterCapability()
+        {
+            return await CheckWithBaseClient("Customer Master Capability", _customerMasterClient);
+        }
+
+        private async Task<HealthResponse> CheckVisualNotificationCapability()
+        {
+            return await CheckWithBaseClient("Visual Notification Capability", _visualNotificationClient);
         }
 
         private async Task<HealthResponse> CheckLogging()

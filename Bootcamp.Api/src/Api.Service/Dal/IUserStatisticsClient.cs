@@ -4,7 +4,7 @@ using Api.Service.Models;
 
 namespace Api.Service.Dal
 {
-    public interface IUserStatisticsClient
+    public interface IUserStatisticsClient : IBaseClient
     {
         Task<UserStatistics> GetStatistics(string type, DateTimeOffset? startInclusive, DateTimeOffset? endExclusive);
     }
