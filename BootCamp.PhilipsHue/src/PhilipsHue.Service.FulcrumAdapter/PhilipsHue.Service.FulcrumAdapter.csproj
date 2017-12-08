@@ -220,6 +220,11 @@
     <Compile Include="Logic\ClientHelper.cs" />
     <Compile Include="Logic\MockHueClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestClients\ApiClient.cs" />
+    <Compile Include="RestClients\BaseClient.cs" />
+    <Compile Include="RestClients\IApiClient.cs" />
+    <Compile Include="RestClients\IVisualNotificationClient.cs" />
+    <Compile Include="RestClients\VisualNotificationClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

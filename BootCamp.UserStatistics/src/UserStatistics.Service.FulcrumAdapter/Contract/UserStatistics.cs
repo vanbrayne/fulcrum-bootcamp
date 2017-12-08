@@ -1,6 +1,5 @@
 ﻿using System;
 using Xlent.Lever.Libraries2.Core.Assert;
-using Xlent.Lever.Libraries2.Core.Storage.Model;
 
 namespace UserStatistics.Service.FulcrumAdapter.Contract
 {

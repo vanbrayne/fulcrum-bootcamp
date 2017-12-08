@@ -27,6 +27,10 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
             _persistance = persistance;
         }
 
+        /// <summary>
+        /// Create a new <paramref name="user"/> record.
+        /// </summary>
+        /// <returns>The new id for the record.</returns>
         [HttpPost]
         [Route("")]
         public async Task<string> Create([FromBody] User user)
@@ -37,6 +41,10 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
             return await _persistance.CreateAsync(user);
         }
 
+        /// <summary>
+        /// Read the user record with id <paramref name="id"/>.
+        /// </summary>
+        /// <param name="id"></param>
         [HttpGet]
         [Route("{id}")]
         public async Task<User> Read(string id)
@@ -46,6 +54,9 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
             return await _persistance.ReadAsync(id);
         }
 
+        /// <summary>
+        /// Read all user records with the specified <paramref name="type"/>. Null for type means all records.
+        /// </summary>
         [HttpGet]
         [Route("")]
         public Task<IEnumerable<User>> ReadAll(string type = null)
@@ -58,6 +69,9 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
             return Task.FromResult(users);
         }
 
+        /// <summary>
+        /// Updated the user record with id <paramref name="id"/>.
+        /// </summary>
         [HttpPut]
         [Route("{id}")]
         public async Task Update(string id, User user)
@@ -68,6 +82,9 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
             await _persistance.UpdateAsync(user.Id, user);
         }
 
+        /// <summary>
+        /// Delete the user record with id <paramref name="id"/>.
+        /// </summary>
         [HttpDelete]
         [Route("{id}")]
         public async Task Delete(string id)
@@ -77,6 +94,10 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
             await _persistance.DeleteAsync(id);
         }
 
+        /// <summary>
+        /// Delete all user records.
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete]
         [Route("")]
         public async Task DeleteAll()
