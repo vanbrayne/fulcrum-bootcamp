@@ -15,7 +15,7 @@
     <RootNamespace>Api.Service</RootNamespace>
     <AssemblyName>Api.Service</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -150,12 +150,16 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ServiceMetasController.cs" />
     <Compile Include="Controllers\LogController.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\VisualNotificationController.cs" />
     <Compile Include="Controllers\BusinessEventsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserStatisticsController.cs" />
+    <Compile Include="Dal\AuthenticationService.cs" />
     <Compile Include="Dal\BaseClient.cs" />
+    <Compile Include="Dal\IAuthenticationService.cs" />
     <Compile Include="Dal\UserStatisticsClient.cs" />
     <Compile Include="Dal\IUserStatisticsClient.cs" />
     <Compile Include="Dal\IVisualNotificationClient.cs" />
@@ -166,6 +170,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\SchemaExamples.cs" />
+    <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\UserStatistics.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,11 +198,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50635</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/Api.Service</IISUrl>
+          <IISUrl>http://localhost:50635/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

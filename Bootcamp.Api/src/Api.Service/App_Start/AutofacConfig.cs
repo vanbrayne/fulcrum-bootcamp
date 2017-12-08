@@ -1,8 +1,11 @@
-﻿using System.Configuration;
+﻿using System.Collections.Generic;
+using System.Configuration;
 using System.Reflection;
 using System.Web.Http;
+using Api.Service.Controllers;
 using Api.Service.Dal;
 using Autofac;
+using Autofac.Core;
 using Autofac.Integration.WebApi;
 using Xlent.Lever.Authentication.Sdk;
 using Xlent.Lever.KeyTranslator.RestClients.Facade.Clients;
@@ -41,9 +44,16 @@ namespace Api.Service
             var tenant = new Tenant(organization, environment);
             builder.RegisterInstance(tenant).As<ITenant>();
 
-            var tokenRefresher = RegisterAuthentication(builder, tenant);
+            var authServiceCredentials = new AuthenticationCredentials { ClientId = "user", ClientSecret = "pwd" };
+
+            var tokenRefresher = RegisterAuthentication(builder, tenant, authServiceCredentials);
 
             RegisterLogging(tokenRefresher);
+
+
+            var authenticationService = new AuthenticationService(ConfigurationManager.AppSettings["Authentication.Url"], tenant,
+                authServiceCredentials);
+            builder.RegisterInstance(authenticationService).As<IAuthenticationService>();
 
             var translateClient = new TranslateClient(ConfigurationManager.AppSettings["KeyTranslator.Url"], tenant,
                 tokenRefresher.GetServiceClient());
@@ -51,17 +61,14 @@ namespace Api.Service
 
             var customerMasterClient = new CustomerMasterClient(ConfigurationManager.AppSettings["CustomerMaster.Url"],
                 tokenRefresher.GetServiceClient());
-
             builder.RegisterInstance(customerMasterClient).As<ICustomerMasterClient>();
 
             var userStatisticsClient = new UserStatisticsClient(ConfigurationManager.AppSettings["UserStatistics.Url"],
                 tokenRefresher.GetServiceClient());
-
             builder.RegisterInstance(userStatisticsClient).As<IUserStatisticsClient>();
 
             var visualNotificationClient = new VisualNotificationClient(ConfigurationManager.AppSettings["VisualNotification.Url"],
                 tokenRefresher.GetServiceClient());
-
             builder.RegisterInstance(visualNotificationClient).As<IVisualNotificationClient>();
         }
 
@@ -73,12 +80,11 @@ namespace Api.Service
             FulcrumApplication.Setup.FullLogger = new FulcrumLogger(logClient);
         }
 
-        private static ITokenRefresherWithServiceClient RegisterAuthentication(ContainerBuilder builder, Tenant tenant)
+        private static ITokenRefresherWithServiceClient RegisterAuthentication(ContainerBuilder builder, Tenant tenant, AuthenticationCredentials authServiceCredentials)
         {
             var authenticationUrl = ConfigurationManager.AppSettings["Authentication.Url"];
             var authenticationClientId = ConfigurationManager.AppSettings["Authentication.ClientId"];
             var authenticationClientSecret = ConfigurationManager.AppSettings["Authentication.ClientSecret"];
-            var authServiceCredentials = new AuthenticationCredentials { ClientId = "user", ClientSecret = "pwd" };
 
             IAuthenticationCredentials authTokenCredentials =
                 new AuthenticationCredentials

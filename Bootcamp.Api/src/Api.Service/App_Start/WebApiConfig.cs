@@ -21,6 +21,9 @@ namespace Api.Service
             config.MessageHandlers.Add(new SaveCorrelationId());
             config.MessageHandlers.Add(new TokenValidationHandler());
 
+            // Enums as strings
+            config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
