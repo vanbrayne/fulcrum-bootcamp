@@ -15,7 +15,7 @@
     <RootNamespace>PhilipsHue.Service.FulcrumAdapter</RootNamespace>
     <AssemblyName>PhilipsHue.Service.FulcrumAdapter</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -255,7 +255,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51752</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/PhilipsHue.Service.FulcrumAdapter</IISUrl>
+          <IISUrl>http://localhost:51797/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

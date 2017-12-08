@@ -15,7 +15,7 @@
     <RootNamespace>CustomerMaster.Service.FulcrumAdapter</RootNamespace>
     <AssemblyName>CustomerMaster.Service.FulcrumAdapter</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -168,7 +168,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51752</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/CustomerMaster.Service.FulcrumAdapter</IISUrl>
+          <IISUrl>http://localhost:51783/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
