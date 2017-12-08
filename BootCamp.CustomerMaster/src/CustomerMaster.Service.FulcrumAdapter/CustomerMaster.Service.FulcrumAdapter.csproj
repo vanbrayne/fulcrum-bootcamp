@@ -15,7 +15,7 @@
     <RootNamespace>CustomerMaster.Service.FulcrumAdapter</RootNamespace>
     <AssemblyName>CustomerMaster.Service.FulcrumAdapter</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -129,6 +129,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Contract\User.cs" />
+    <Compile Include="Controllers\ServiceMetasController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="RestClients\ApiClient.cs" />
     <Compile Include="RestClients\BaseClient.cs" />
@@ -163,9 +164,9 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>51752</DevelopmentServerPort>
+          <DevelopmentServerPort>51783</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:51783/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

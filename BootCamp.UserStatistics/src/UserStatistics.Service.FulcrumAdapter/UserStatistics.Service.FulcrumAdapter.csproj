@@ -131,6 +131,7 @@
     <Compile Include="Contract\IUserStatisticsController.cs" />
     <Compile Include="Contract\UserStatistics.cs" />
     <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Controllers\ServiceMetasController.cs" />
     <Compile Include="Controllers\UserStatisticsController.cs" />
     <Compile Include="Contract\UserCreatedEvent.cs" />
     <Compile Include="Global.asax.cs">
