@@ -152,11 +152,14 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ServiceMetasController.cs" />
     <Compile Include="Controllers\LogController.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\VisualNotificationController.cs" />
     <Compile Include="Controllers\BusinessEventsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserStatisticsController.cs" />
+    <Compile Include="Dal\AuthenticationService.cs" />
     <Compile Include="Dal\BaseClient.cs" />
+    <Compile Include="Dal\IAuthenticationService.cs" />
     <Compile Include="Dal\UserStatisticsClient.cs" />
     <Compile Include="Dal\IUserStatisticsClient.cs" />
     <Compile Include="Dal\IVisualNotificationClient.cs" />
@@ -167,6 +170,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\SchemaExamples.cs" />
+    <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\UserStatistics.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
