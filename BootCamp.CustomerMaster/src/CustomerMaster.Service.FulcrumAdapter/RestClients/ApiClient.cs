@@ -36,7 +36,7 @@ namespace CustomerMaster.Service.FulcrumAdapter.RestClients
         public async Task PublishAsync(Guid id, JObject eventBody)
         {
             var relativeUrl = $"api/businessEvents/Publish/{id}";
-            await RestClient.PostAsync<string, JObject>(relativeUrl, eventBody);
+            await RestClient.PostNoResponseContentAsync(relativeUrl, eventBody);
         }
 
         /// <inheritdoc />
