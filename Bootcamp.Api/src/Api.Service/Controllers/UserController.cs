@@ -48,15 +48,12 @@ namespace Api.Service.Controllers
 
             var result = await _customerMasterClient.GetUsers(type);
 
-            if (!string.IsNullOrWhiteSpace(type))
+            var translateUp = new BatchTranslate(_translateClient, "customer-master", "mobile-app");
+            foreach (var user in result)
             {
-                var translateUp = new BatchTranslate(_translateClient, "customer-master", "mobile-app");
-                foreach (var user in result)
-                {
-                    translateUp.Add("user.type", type, translatedValue => user.Type = translatedValue);
-                }
-                await translateUp.ExecuteAsync();
+                translateUp.Add("user.type", user.Type, translatedValue => user.Type = translatedValue);
             }
+            await translateUp.ExecuteAsync();
 
             return result;
         }
@@ -66,6 +63,7 @@ namespace Api.Service.Controllers
         public async Task<string> Post(User user)
         {
             ServiceContract.RequireNotNull(user, nameof(user));
+            ServiceContract.RequireValidated(user, nameof(user));
 
             await new BatchTranslate(_translateClient, "mobile-app", "customer-master")
                 .Add("user.type", user.Type, translatedValue => user.Type = translatedValue)
@@ -80,6 +78,7 @@ namespace Api.Service.Controllers
         {
             ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
             ServiceContract.RequireNotNull(user, nameof(user));
+            ServiceContract.RequireValidated(user, nameof(user));
 
             await new BatchTranslate(_translateClient, "mobile-app", "customer-master")
                 .Add("user.type", user.Type, translatedValue => user.Type = translatedValue)

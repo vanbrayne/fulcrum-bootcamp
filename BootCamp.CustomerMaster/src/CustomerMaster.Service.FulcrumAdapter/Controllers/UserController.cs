@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using CustomerMaster.Service.FulcrumAdapter.Contract;
+using CustomerMaster.Service.FulcrumAdapter.RestClients;
 using Xlent.Lever.Authentication.Sdk.Attributes;
 using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
@@ -17,14 +18,17 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
     public class UserController : ApiController
     {
         private readonly ICrud<User, string> _persistance;
+        private readonly IApiClient _apiClient;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="persistance">How we deal with persistance</param>
-        public UserController(ICrud<User, string> persistance)
+        /// <param name="apiClient">Rest client to call the API</param>
+        public UserController(ICrud<User, string> persistance, IApiClient apiClient)
         {
             _persistance = persistance;
+            _apiClient = apiClient;
         }
 
         /// <summary>

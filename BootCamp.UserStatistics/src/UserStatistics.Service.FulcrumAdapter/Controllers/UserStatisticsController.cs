@@ -18,6 +18,7 @@ namespace UserStatistics.Service.FulcrumAdapter.Controllers
         [Route("")]
         public Task<Contract.UserStatistics> Read(string type = null, DateTimeOffset? startInclusive = null, DateTimeOffset? endExclusive = null)
         {
+            // Tips: "type" can be "private" or "public", see http://lever.xlent-fulcrum.info/wiki/Bootcamp_course#user.type
             throw new FulcrumNotImplementedException();
         }
     }

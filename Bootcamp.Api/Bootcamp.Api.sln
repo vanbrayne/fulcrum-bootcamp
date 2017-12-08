@@ -7,10 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Service", "src\Api.Serv
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		azure|Any CPU = azure|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9290A9DB-6A80-4B61-9910-5FDDFF71BEB2}.azure|Any CPU.ActiveCfg = azure|Any CPU
+		{9290A9DB-6A80-4B61-9910-5FDDFF71BEB2}.azure|Any CPU.Build.0 = azure|Any CPU
 		{9290A9DB-6A80-4B61-9910-5FDDFF71BEB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9290A9DB-6A80-4B61-9910-5FDDFF71BEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9290A9DB-6A80-4B61-9910-5FDDFF71BEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
