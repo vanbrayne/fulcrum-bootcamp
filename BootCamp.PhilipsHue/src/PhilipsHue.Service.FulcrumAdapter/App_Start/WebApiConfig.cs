@@ -2,6 +2,7 @@
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using PhilipsHue.Service.FulcrumAdapter;
+using Swashbuckle.Application;
 using WebActivatorEx;
 using Xlent.Lever.Authentication.Sdk.Handlers;
 using Xlent.Lever.Libraries2.WebApi.Pipe.Inbound;
@@ -22,6 +23,14 @@ namespace PhilipsHue.Service.FulcrumAdapter
             config.MessageHandlers.Add(new TokenValidationHandler());
             config.MessageHandlers.Add(new SaveCorrelationId());
             config.MessageHandlers.Add(new LogRequestAndResponse());
+
+            // Redirect root to Swagger UI
+            config.Routes.MapHttpRoute(
+                name: "Swagger UI",
+                routeTemplate: "",
+                defaults: null,
+                constraints: null,
+                handler: new RedirectHandler(SwaggerDocsConfig.DefaultRootUrlResolver, "swagger/ui/index"));
         }
     }
 }
