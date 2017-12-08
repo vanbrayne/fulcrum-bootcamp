@@ -1,13 +1,17 @@
 ﻿using System;
 using Microsoft.Rest;
 using Xlent.Lever.Libraries2.WebApi.RestClientHelper;
-#pragma warning disable 1591
 
-namespace UserStatistics.Service.FulcrumAdapter.RestClient
+namespace UserStatistics.Service.FulcrumAdapter.RestClients
 {
+    /// <summary>
+    /// Lever BaseClient
+    /// </summary>
     public abstract class BaseClient
     {
+        #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         protected readonly IRestClient RestClient;
+
 
         private static string GetUriStart(string baseUri)
         {
@@ -18,9 +22,14 @@ namespace UserStatistics.Service.FulcrumAdapter.RestClient
             return $"{baseUri}";
         }
 
+        /// <summary>
+        /// BaseClient constructor
+        /// </summary>
+        /// <param name="baseUri"></param>
+        /// <param name="authenticationCredentials"></param>
         protected BaseClient(string baseUri, ServiceClientCredentials authenticationCredentials)
         {
-            RestClient = new Xlent.Lever.Libraries2.WebApi.RestClientHelper.RestClient(GetUriStart(baseUri), authenticationCredentials);
+            RestClient = new RestClient(GetUriStart(baseUri), authenticationCredentials);
         }
 
     }

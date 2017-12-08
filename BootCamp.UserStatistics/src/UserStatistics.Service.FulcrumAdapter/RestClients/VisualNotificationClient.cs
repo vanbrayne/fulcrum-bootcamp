@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Rest;
-using UserStatistics.Service.FulcrumAdapter.RestClient;
 
 #pragma warning disable 1591
 
