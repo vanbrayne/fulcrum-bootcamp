@@ -2,7 +2,7 @@
 using Microsoft.Rest;
 using Xlent.Lever.Libraries2.WebApi.RestClientHelper;
 
-namespace UserStatistics.Service.FulcrumAdapter.RestClients
+namespace PhilipsHue.Service.FulcrumAdapter.RestClients
 {
     /// <summary>
     /// Lever BaseClient

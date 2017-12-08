@@ -3,7 +3,7 @@ using Microsoft.Rest;
 
 #pragma warning disable 1591
 
-namespace UserStatistics.Service.FulcrumAdapter.RestClients
+namespace PhilipsHue.Service.FulcrumAdapter.RestClients
 {
     public class VisualNotificationClient : BaseClient, IVisualNotificationClient
     {

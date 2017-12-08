@@ -150,6 +150,8 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ServiceMetasController.cs" />
+    <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\VisualNotificationController.cs" />
     <Compile Include="Controllers\BusinessEventsController.cs" />
