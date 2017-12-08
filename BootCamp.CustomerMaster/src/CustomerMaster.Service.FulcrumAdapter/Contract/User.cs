@@ -28,7 +28,8 @@ namespace CustomerMaster.Service.FulcrumAdapter.Contract
         public void Validate(string errorLocation, string propertyPath = "")
         {
             FulcrumValidate.IsNotNullOrWhiteSpace(Name, nameof(Name), errorLocation);
-            // TODO: More validation?
+            FulcrumValidate.IsNotNullOrWhiteSpace(Type, nameof(Type), errorLocation);
+            FulcrumValidate.IsTrue(Type == "int" || Type == "ext", errorLocation, $"Type must be either \"ext\" or \"int\", was \"{Type}\".");
         }
     }
 }
