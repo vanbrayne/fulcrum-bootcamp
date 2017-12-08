@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Rest;
+using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 using Xlent.Lever.Libraries2.WebApi.RestClientHelper;
 
 namespace PhilipsHue.Service.FulcrumAdapter.RestClients
@@ -9,11 +10,12 @@ namespace PhilipsHue.Service.FulcrumAdapter.RestClients
     /// </summary>
     public abstract class BaseClient
     {
-        #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        protected readonly IRestClient RestClient;
+        /// <summary>
+        /// The rest client we will use for all calls.
+        /// </summary>
+        public readonly IRestClient RestClient;
 
-
-        private static string GetUriStart(string baseUri)
+        internal static string GetUriStart(string baseUri)
         {
             if (string.IsNullOrWhiteSpace(baseUri)) throw new ArgumentException($"{nameof(baseUri)} can't be null or empty");
             var isWelFormedUri = Uri.IsWellFormedUriString(baseUri, UriKind.Absolute);
@@ -26,11 +28,10 @@ namespace PhilipsHue.Service.FulcrumAdapter.RestClients
         /// BaseClient constructor
         /// </summary>
         /// <param name="baseUri"></param>
-        /// <param name="authenticationCredentials"></param>
-        protected BaseClient(string baseUri, ServiceClientCredentials authenticationCredentials)
+        /// <param name="authenticationToken"></param>
+        protected BaseClient(string baseUri, AuthenticationToken authenticationToken)
         {
-            RestClient = new RestClient(GetUriStart(baseUri), authenticationCredentials);
+            RestClient = new RestClient(GetUriStart(baseUri), authenticationToken);
         }
-
     }
 }

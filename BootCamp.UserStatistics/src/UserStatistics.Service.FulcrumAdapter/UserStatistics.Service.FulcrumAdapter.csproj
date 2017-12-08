@@ -105,9 +105,8 @@
     <Reference Include="Xlent.Lever.Libraries2.Core.NetFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xlent.Lever.Libraries2.Core.NetFramework.1.15.8\lib\net46\Xlent.Lever.Libraries2.Core.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Xlent.Lever.Libraries2.WebApi">
-      <HintPath>..\..\packages\Xlent.Lever.Libraries2.WebApi.4.3.11\lib\net46\Xlent.Lever.Libraries2.WebApi.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Xlent.Lever.Libraries2.WebApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xlent.Lever.Libraries2.WebApi.4.3.12\lib\net46\Xlent.Lever.Libraries2.WebApi.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -141,8 +140,6 @@
     <Compile Include="RestClients\ApiClient.cs" />
     <Compile Include="RestClients\BaseClient.cs" />
     <Compile Include="RestClients\IApiClient.cs" />
-    <Compile Include="RestClients\IVisualNotificationClient.cs" />
-    <Compile Include="RestClients\VisualNotificationClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
