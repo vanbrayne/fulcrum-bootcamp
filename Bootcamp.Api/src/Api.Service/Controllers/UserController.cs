@@ -67,6 +67,10 @@ namespace Api.Service.Controllers
         {
             ServiceContract.RequireNotNull(user, nameof(user));
 
+            await new BatchTranslate(_translateClient, "mobile-app", "customer-master")
+                .Add("user.type", user.Type, translatedValue => user.Type = translatedValue)
+                .ExecuteAsync();
+
             return await _customerMasterClient.AddUser(user);
         }
 
