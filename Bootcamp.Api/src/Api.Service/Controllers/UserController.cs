@@ -66,6 +66,7 @@ namespace Api.Service.Controllers
         public async Task<string> Post(User user)
         {
             ServiceContract.RequireNotNull(user, nameof(user));
+            ServiceContract.RequireValidated(user, nameof(user));
 
             await new BatchTranslate(_translateClient, "mobile-app", "customer-master")
                 .Add("user.type", user.Type, translatedValue => user.Type = translatedValue)
