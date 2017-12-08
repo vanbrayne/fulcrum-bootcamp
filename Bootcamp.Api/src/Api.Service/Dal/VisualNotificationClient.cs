@@ -1,8 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
-using Api.Service.Models;
+﻿using System.Threading.Tasks;
 using Microsoft.Rest;
-using System.Collections.Generic;
 
 namespace Api.Service.Dal
 {

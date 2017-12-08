@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Api.Service.Models;
+﻿using System.Threading.Tasks;
 
 namespace Api.Service.Dal
 {

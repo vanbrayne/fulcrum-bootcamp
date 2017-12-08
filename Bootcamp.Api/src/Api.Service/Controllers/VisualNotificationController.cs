@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
 using Api.Service.Dal;
-using Xlent.Lever.Libraries2.Core.Assert;
 
 namespace Api.Service.Controllers
 {
@@ -26,7 +20,6 @@ namespace Api.Service.Controllers
             await _client.VisualNotificationSuccessAsync();
         }
 
-        /// <inheritdoc />
         [HttpPost]
         [Route("Warning")]
         public async Task WarningAsync()
@@ -34,7 +27,6 @@ namespace Api.Service.Controllers
             await _client.VisualNotificationWarningAsync();
         }
 
-        /// <inheritdoc />
         [HttpPost]
         [Route("Error")]
         public async Task ErrorAsync()
