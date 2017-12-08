@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.Rest;
-using Xlent.Lever.KeyTranslator.RestClients.Api.Models;
+using Xlent.Lever.Libraries2.Core.Health.Model;
 using Xlent.Lever.Libraries2.WebApi.RestClientHelper;
 
 namespace Api.Service.Dal

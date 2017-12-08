@@ -54,12 +54,20 @@ namespace Api.Service.Controllers
 
         private async Task<HealthResponse> CheckWithBaseClient(string resourceName, IBaseClient baseClient)
         {
-            return await ChackAction(resourceName, async () =>
+            try
             {
                 var response = await baseClient.GetServiceHealthAsync();
-                if (response.Status == null) throw new Exception("Unexpected response");
-                if ((HealthResponse.StatusEnum)response.Status != HealthResponse.StatusEnum.Ok) throw new Exception($"Status is not ok. Was '{response.Status}");
-            });
+                return response;
+            }
+            catch (Exception e)
+            {
+                return new HealthResponse
+                {
+                    Resource = resourceName,
+                    Status = HealthResponse.StatusEnum.Error,
+                    Message = e.Message + " " + e.InnerException?.Message
+                };
+            }
         }
         private async Task<HealthResponse> CheckUserStatisticsCapability()
         {
