@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.Rest;
 using Newtonsoft.Json.Linq;
+using Xlent.Lever.Libraries2.Core.Application;
 using Xlent.Lever.Libraries2.Core.Logging;
+using Xlent.Lever.Libraries2.Core.Platform.Authentication;
+using Xlent.Lever.Libraries2.WebApi.RestClientHelper;
 
 namespace UserStatistics.Service.FulcrumAdapter.RestClients
 {
@@ -14,13 +16,20 @@ namespace UserStatistics.Service.FulcrumAdapter.RestClients
         /// <summary>
         /// Constructor
         /// </summary>
-        public ApiClient(string baseUri) : base(baseUri, GetCredentials())
+        public ApiClient(string baseUri) : base(baseUri, GetToken(baseUri).Result)
         {
         }
 
-        private static ServiceClientCredentials GetCredentials()
+        private static async Task<AuthenticationToken> GetToken(string baseUri)
         {
-            throw new NotImplementedException();
+            var credentials = new AuthenticationCredentials()
+            {
+                ClientId = FulcrumApplication.AppSettings.GetString("Authentication.ClientId", true),
+                ClientSecret = FulcrumApplication.AppSettings.GetString("Authentication.ClientSecret", true)
+            };
+            const string relativeUrl = "api/Authentication/Tokens";
+            var restClient = new RestClient(GetUriStart(baseUri));
+            return await restClient.PostAsync<AuthenticationToken, AuthenticationCredentials > (relativeUrl, credentials);
         }
 
         /// <inheritdoc />
