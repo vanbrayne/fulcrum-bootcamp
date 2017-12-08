@@ -1,6 +1,7 @@
 ﻿using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
+using Swashbuckle.Application;
 using UserStatistics.Service.FulcrumAdapter;
 using WebActivatorEx;
 using Xlent.Lever.Authentication.Sdk.Handlers;
@@ -22,6 +23,15 @@ namespace UserStatistics.Service.FulcrumAdapter
             config.MessageHandlers.Add(new TokenValidationHandler());
             config.MessageHandlers.Add(new SaveCorrelationId());
             config.MessageHandlers.Add(new LogRequestAndResponse());
+
+
+            // Redirect root to Swagger UI
+            config.Routes.MapHttpRoute(
+                name: "Swagger UI",
+                routeTemplate: "",
+                defaults: null,
+                constraints: null,
+                handler: new RedirectHandler(SwaggerDocsConfig.DefaultRootUrlResolver, "swagger/ui/index"));
         }
     }
 }
