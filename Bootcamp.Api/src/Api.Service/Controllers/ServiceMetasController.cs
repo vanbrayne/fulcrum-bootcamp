@@ -6,6 +6,7 @@ using Xlent.Lever.KeyTranslator.Sdk;
 using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Health.Logic;
 using Xlent.Lever.Libraries2.Core.Health.Model;
+using Xlent.Lever.Libraries2.Core.Logging;
 using Xlent.Lever.Libraries2.Core.MultiTenant.Model;
 using Xlent.Lever.Libraries2.WebApi.Platform.Authentication;
 
@@ -36,12 +37,21 @@ namespace Api.Service.Controllers
 
             var aggregator = new ResourceHealthAggregator(_tenant, "Api");
             aggregator.AddHealthResponse(await CheckAuthentication());
-            //aggregator.AddHealthResponse(await CheckLogging());
+            aggregator.AddHealthResponse(await CheckLogging());
             aggregator.AddHealthResponse(await CheckValueTranslation());
             //CheckVisualNotificationCapability();
             //CheckCustomerMasterCapability();
             //CheckUserStatisticsCapability();
             return aggregator.GetAggregatedHealthResponse();
+        }
+
+        private async Task<HealthResponse> CheckLogging()
+        {
+            return await ChackAction("Logging", () =>
+            {
+                Log.LogInformation("Api Service Health Check");
+                return Task.CompletedTask;
+            });
         }
 
         private async Task<HealthResponse> CheckAuthentication()
