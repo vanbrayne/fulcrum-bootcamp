@@ -78,6 +78,7 @@ namespace Api.Service.Controllers
         {
             ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
             ServiceContract.RequireNotNull(user, nameof(user));
+            ServiceContract.RequireValidated(user, nameof(user));
 
             await new BatchTranslate(_translateClient, "mobile-app", "customer-master")
                 .Add("user.type", user.Type, translatedValue => user.Type = translatedValue)
