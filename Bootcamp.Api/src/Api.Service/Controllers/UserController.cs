@@ -25,11 +25,11 @@ namespace Api.Service.Controllers
 
         [Route("{id}")]
         [HttpGet]
-        public User Get(string id)
+        public async Task<User> Get(string id)
         {
             ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
 
-            throw new FulcrumNotImplementedException();
+            return await _customerMasterClient.GetUser(id);
         }
 
         /*
