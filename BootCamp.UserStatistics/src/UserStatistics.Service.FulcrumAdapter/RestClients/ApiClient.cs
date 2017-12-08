@@ -6,7 +6,7 @@ using Xlent.Lever.Libraries2.Core.Logging;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 using Xlent.Lever.Libraries2.WebApi.RestClientHelper;
 
-namespace UserStatistics.Service.FulcrumAdapter.RestClients
+namespace CustomerMaster.Service.FulcrumAdapter.RestClients
 {
     /// <summary>
     /// Client for publishing events.
@@ -35,7 +35,7 @@ namespace UserStatistics.Service.FulcrumAdapter.RestClients
         /// <inheritdoc />
         public async Task PublishAsync(Guid id, JObject eventBody)
         {
-            var relativeUrl = $"api/Publish/{id}";
+            var relativeUrl = $"api/businessEvents/Publish/{id}";
             await RestClient.PostAsync<string, JObject>(relativeUrl, eventBody);
         }
 

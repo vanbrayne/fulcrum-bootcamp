@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.Rest;
 using Newtonsoft.Json.Linq;
 using Xlent.Lever.Libraries2.Core.Application;
 using Xlent.Lever.Libraries2.Core.Logging;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 using Xlent.Lever.Libraries2.WebApi.RestClientHelper;
 
-namespace PhilipsHue.Service.FulcrumAdapter.RestClients
+namespace CustomerMaster.Service.FulcrumAdapter.RestClients
 {
     /// <summary>
     /// Client for publishing events.
@@ -36,7 +35,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.RestClients
         /// <inheritdoc />
         public async Task PublishAsync(Guid id, JObject eventBody)
         {
-            var relativeUrl = $"api/Publish/{id}";
+            var relativeUrl = $"api/businessEvents/Publish/{id}";
             await RestClient.PostAsync<string, JObject>(relativeUrl, eventBody);
         }
 
