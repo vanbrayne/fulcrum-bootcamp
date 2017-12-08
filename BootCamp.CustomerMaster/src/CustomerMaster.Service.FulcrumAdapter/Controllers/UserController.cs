@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 using CustomerMaster.Service.FulcrumAdapter.Contract;
+using CustomerMaster.Service.FulcrumAdapter.RestClients;
+using Newtonsoft.Json.Linq;
 using Xlent.Lever.Authentication.Sdk.Attributes;
 using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
@@ -17,14 +20,16 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
     public class UserController : ApiController
     {
         private readonly ICrud<User, string> _persistance;
+        private readonly IApiClient _apiClient;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="persistance">How we deal with persistance</param>
-        public UserController(ICrud<User, string> persistance)
+        public UserController(ICrud<User, string> persistance, IApiClient apiClient)
         {
             _persistance = persistance;
+            _apiClient = apiClient;
         }
 
         /// <summary>
@@ -38,7 +43,16 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
             ServiceContract.RequireNotNull(user, nameof(user));
             ServiceContract.RequireValidated(user, nameof(user));
 
-            return await _persistance.CreateAsync(user);
+            
+            var id = await _persistance.CreateAsync(user);
+            var eventBody = new
+            {
+                UserId = id,
+                Type = user.Type,
+                CreatedAt = DateTimeOffset.Now
+            };
+            await _apiClient.PublishAsync(new Guid("CCF45DCB-E022-4419-BB24-E96361F16F13"), JObject.FromObject(eventBody));
+            return id;
         }
 
         /// <summary>
