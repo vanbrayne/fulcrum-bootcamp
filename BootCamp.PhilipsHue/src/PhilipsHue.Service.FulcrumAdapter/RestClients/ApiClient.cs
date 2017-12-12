@@ -6,7 +6,7 @@ using Xlent.Lever.Libraries2.Core.Logging;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 using Xlent.Lever.Libraries2.WebApi.RestClientHelper;
 
-namespace CustomerMaster.Service.FulcrumAdapter.RestClients
+namespace PhilipsHue.Service.FulcrumAdapter.RestClients
 {
     /// <summary>
     /// Client for publishing events.
