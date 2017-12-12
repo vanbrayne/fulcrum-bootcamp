@@ -102,7 +102,7 @@
       <HintPath>..\..\packages\Xlent.Lever.Authentication.Sdk.4.2.0\lib\net46\Xlent.Lever.Authentication.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Xlent.Lever.BusinessEvents.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xlent.Lever.BusinessEvents.Sdk.3.0.5\lib\Xlent.Lever.BusinessEvents.Sdk\Xlent.Lever.BusinessEvents.Sdk.dll</HintPath>
+      <HintPath>..\..\packages\Xlent.Lever.BusinessEvents.Sdk.3.1.0\lib\Xlent.Lever.BusinessEvents.Sdk\Xlent.Lever.BusinessEvents.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Xlent.Lever.Configurations.Sdk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xlent.Lever.Configurations.Sdk.4.0.10\lib\Configurations.Sdk\Xlent.Lever.Configurations.Sdk.dll</HintPath>
@@ -117,10 +117,10 @@
       <HintPath>..\..\packages\Xlent.Lever.KeyTranslator.Sdk.3.0.8\lib\KeyTranslator.Sdk\Xlent.Lever.KeyTranslator.Sdk.dll</HintPath>
     </Reference>
     <Reference Include="Xlent.Lever.Libraries2.Core.NetFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xlent.Lever.Libraries2.Core.NetFramework.1.15.8\lib\net46\Xlent.Lever.Libraries2.Core.NetFramework.dll</HintPath>
+      <HintPath>..\..\packages\Xlent.Lever.Libraries2.Core.NetFramework.1.16.0\lib\net46\Xlent.Lever.Libraries2.Core.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Xlent.Lever.Libraries2.WebApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xlent.Lever.Libraries2.WebApi.4.3.11\lib\net46\Xlent.Lever.Libraries2.WebApi.dll</HintPath>
+      <HintPath>..\..\packages\Xlent.Lever.Libraries2.WebApi.4.3.13\lib\net46\Xlent.Lever.Libraries2.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Xlent.Lever.Logger.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xlent.Lever.Logger.Sdk.4.12.2\lib\net46\Xlent.Lever.Logger.Common.dll</HintPath>

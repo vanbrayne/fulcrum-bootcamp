@@ -27,6 +27,8 @@ namespace UserStatistics.Service.FulcrumAdapter.Controllers
         {
             ServiceContract.RequireNotNull(eventBody, nameof(eventBody));
 
+            // TODO: implement
+
             await Task.Yield();
         }
 
@@ -41,7 +43,7 @@ namespace UserStatistics.Service.FulcrumAdapter.Controllers
         /// <exception cref="FulcrumNotImplementedException"></exception>
         [HttpPost]
         [Route("{entityName}/{eventName}/{majorVersion}")]
-        public Task CatchAllEvents(string entityName, string eventName, int majorVersion, dynamic eventBody)
+        public Task CatchAllEventsAsync(string entityName, string eventName, int majorVersion, dynamic eventBody)
         {
             ServiceContract.RequireNotNullOrWhitespace(entityName, nameof(entityName));
             ServiceContract.RequireNotNullOrWhitespace(eventName, nameof(eventName));

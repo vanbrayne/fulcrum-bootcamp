@@ -16,5 +16,21 @@ namespace CustomerMaster.Service.FulcrumAdapter.RestClients
         /// <param name="id">The publication id</param>
         /// <param name="eventBody">The event body</param>
         Task PublishAsync(Guid id, JObject eventBody);
+
+        /// <summary>
+        /// Make a visual notification with status Success
+        /// </summary>
+        Task VisualNotificationSuccessAsync();
+
+        /// <summary>
+        /// Make a visual notification with status Warning
+        /// </summary>
+        Task VisualNotificationWarningAsync();
+
+        /// <summary>
+        /// Make a visual notification with status Error
+        /// </summary>
+
+        Task VisualNotificationErrorAsync();
     }
 }
