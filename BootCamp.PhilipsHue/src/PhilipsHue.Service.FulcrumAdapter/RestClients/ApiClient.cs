@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Xlent.Lever.Libraries2.Core.Application;
@@ -13,6 +14,8 @@ namespace PhilipsHue.Service.FulcrumAdapter.RestClients
     /// </summary>
     public class ApiClient : BaseClient, IApiClient
     {
+
+        private static readonly HttpClient HttpClient = new HttpClient();
         /// <summary>
         /// Constructor
         /// </summary>
@@ -27,6 +30,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.RestClients
                 ClientId = FulcrumApplication.AppSettings.GetString("Authentication.ClientId", true),
                 ClientSecret = FulcrumApplication.AppSettings.GetString("Authentication.ClientSecret", true)
             };
+
             const string relativeUrl = "api/Authentication/Tokens";
             var restClient = new RestClient(GetUriStart(baseUri));
             return await restClient.PostAsync<AuthenticationToken, AuthenticationCredentials > (relativeUrl, credentials);
