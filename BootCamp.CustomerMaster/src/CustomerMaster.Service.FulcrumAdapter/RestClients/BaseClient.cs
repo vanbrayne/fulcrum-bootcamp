@@ -17,8 +17,8 @@ namespace CustomerMaster.Service.FulcrumAdapter.RestClients
         internal static string GetUriStart(string baseUri)
         {
             if (string.IsNullOrWhiteSpace(baseUri)) throw new ArgumentException($"{nameof(baseUri)} can't be null or empty");
-            var isWelFormedUri = Uri.IsWellFormedUriString(baseUri, UriKind.Absolute);
-            if (!isWelFormedUri) throw new ArgumentException($"{nameof(baseUri)} must be a welformed uri");
+            var isWellFormedUri = Uri.IsWellFormedUriString(baseUri, UriKind.Absolute);
+            if (!isWellFormedUri) throw new ArgumentException($"{nameof(baseUri)} must be a welformed uri");
 
             return $"{baseUri}";
         }
