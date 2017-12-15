@@ -23,12 +23,13 @@ namespace Api.Service.Controllers
             _translateClient = translateClient;
         }
 
+        //TODO: Tutorial 1 - Implement this method
         [Route("{id}")]
         [HttpGet]
         public User Get(string id)
         {
             ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
-
+            
             throw new FulcrumNotImplementedException();
         }
 
@@ -72,6 +73,7 @@ namespace Api.Service.Controllers
             return await _customerMasterClient.AddUser(user);
         }
 
+        //TODO: Tutorial 1 - Implement this method
         [Route("{id}")]
         [HttpPut]
         public async Task<User> PutAsync(string id, User user)
@@ -87,6 +89,7 @@ namespace Api.Service.Controllers
             throw new FulcrumNotImplementedException();
         }
 
+        //TODO: Tutorial 1 - Implement this method
         [Route("{id}")]
         [HttpDelete]
         public User DeleteOne(string id)
