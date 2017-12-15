@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
 using Api.Service.Dal;
 using Api.Service.Models;
 using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
-using Xlent.Lever.Libraries2.Core.MultiTenant.Model;
-using Xlent.Lever.Authentication.Sdk;
-using AuthenticationManager = Xlent.Lever.Authentication.Sdk.AuthenticationManager;
 
 namespace Api.Service.Controllers
 {

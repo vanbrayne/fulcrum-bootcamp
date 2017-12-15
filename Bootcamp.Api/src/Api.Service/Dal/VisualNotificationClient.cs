@@ -11,19 +11,19 @@ namespace Api.Service.Dal
 
         public async Task VisualNotificationSuccessAsync()
         {
-            var relativeUrl = $"api/Notifications/Success";
+            var relativeUrl = "api/Notifications/Success";
             await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
 
         public async Task VisualNotificationWarningAsync()
         {
-            var relativeUrl = $"api/Notifications/Warning";
+            var relativeUrl = "api/Notifications/Warning";
             await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
 
         public async Task VisualNotificationErrorAsync()
         {
-            var relativeUrl = $"api/Notifications/Error";
+            var relativeUrl = "api/Notifications/Error";
             await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
     }

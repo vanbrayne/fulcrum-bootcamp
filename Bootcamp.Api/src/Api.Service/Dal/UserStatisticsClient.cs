@@ -13,7 +13,7 @@ namespace Api.Service.Dal
 
         public async Task<UserStatistics> GetStatistics(string type = null, DateTimeOffset? startInclusive = null, DateTimeOffset? endExclusive = null)
         {
-            var relativeUrl = $"api/UserStatistics?";
+            var relativeUrl = "api/UserStatistics?";
             if (startInclusive != null)
                 relativeUrl += $"&startInclusive={startInclusive}";
             if(endExclusive != null)
