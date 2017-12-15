@@ -16,7 +16,7 @@ namespace Api.Service.Controllers
     {
 
 
-        [Route("Log")]
+        [Route("")]
         [HttpPost]
         public async Task<IHttpActionResult> LogAsync(LogInstanceInformation message)
         {
