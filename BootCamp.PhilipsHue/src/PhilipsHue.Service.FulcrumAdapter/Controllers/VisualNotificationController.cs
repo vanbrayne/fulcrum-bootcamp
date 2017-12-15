@@ -4,7 +4,6 @@ using System.Web.Http;
 using PhilipsHue.Service.FulcrumAdapter.Contract;
 using PhilipsHue.Service.FulcrumAdapter.Logic;
 using Q42.HueApi;
-using Q42.HueApi.ColorConverters;
 using Q42.HueApi.Interfaces;
 using Q42.HueApi.ColorConverters.HSB;
 using Xlent.Lever.Authentication.Sdk.Attributes;
