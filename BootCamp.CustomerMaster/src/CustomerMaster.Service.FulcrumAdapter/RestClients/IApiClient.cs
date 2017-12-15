@@ -18,6 +18,11 @@ namespace CustomerMaster.Service.FulcrumAdapter.RestClients
         Task PublishAsync(Guid id, JObject eventBody);
 
         /// <summary>
+        /// Publish an event
+        /// </summary>
+        Task PublishAsync(string entityName, string eventName, int majorVersion, int minorVersion, JObject eventBody);
+
+        /// <summary>
         /// Make a visual notification with status Success
         /// </summary>
         Task VisualNotificationSuccessAsync();

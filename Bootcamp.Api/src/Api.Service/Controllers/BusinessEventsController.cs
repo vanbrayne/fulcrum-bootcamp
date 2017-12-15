@@ -41,7 +41,7 @@ namespace Api.Service.Controllers
             await new BusinessEvents(BusinessEventsBaseUrl, _tenant, _tokenRefresher.GetServiceClient()).PublishAsync(id, content);
         }
 
-        [Route("{entityName}/{eventName}/{majorVersion}")]
+        [Route("{entityName}/{eventName}/{majorVersion}/{minorVersion}")]
         [HttpPost]
         public async Task PublishMockAsync(string entityName, string eventName, int majorVersion, int minorVersion, JObject content)
         {
