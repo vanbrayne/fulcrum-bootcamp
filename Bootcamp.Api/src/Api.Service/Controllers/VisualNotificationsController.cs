@@ -8,7 +8,7 @@ namespace Api.Service.Controllers
     public class VisualNotificationsController : ApiController
     {
         private readonly IVisualNotificationClient _client;
-        VisualNotificationsController(IVisualNotificationClient client)
+        public VisualNotificationsController(IVisualNotificationClient client)
         {
             _client = client;
         }
