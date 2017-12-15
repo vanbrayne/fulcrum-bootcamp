@@ -65,7 +65,7 @@ namespace Api.Service.Controllers
                 {
                     Resource = resourceName,
                     Status = HealthResponse.StatusEnum.Error,
-                    Message = e.Message + " " + e.InnerException?.Message
+                    Message = $"{baseClient.BaseUri} {e.ToLogString(true)}"
                 };
             }
         }
