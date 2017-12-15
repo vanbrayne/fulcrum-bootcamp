@@ -7,6 +7,7 @@ using CustomerMaster.Service.FulcrumAdapter.Contract;
 using CustomerMaster.Service.FulcrumAdapter.RestClients;
 using Newtonsoft.Json.Linq;
 using Xlent.Lever.Authentication.Sdk.Attributes;
+using Xlent.Lever.Libraries2.Core.Application;
 using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 using Xlent.Lever.Libraries2.Core.Storage.Logic;
@@ -44,7 +45,7 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
             ServiceContract.RequireNotNull(user, nameof(user));
             ServiceContract.RequireValidated(user, nameof(user));
 
-            
+
             var id = await _persistance.CreateAsync(user);
             var eventBody = new
             {
@@ -52,7 +53,14 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
                 Type = user.Type,
                 CreatedAt = DateTimeOffset.Now
             };
-            await _apiClient.PublishAsync(new Guid("CCF45DCB-E022-4419-BB24-E96361F16F13"), JObject.FromObject(eventBody));
+            if (FulcrumApplication.IsInDevelopment)
+            {
+            }
+            else
+            {
+                await _apiClient.PublishAsync(new Guid("CCF45DCB-E022-4419-BB24-E96361F16F13"),
+                    JObject.FromObject(eventBody));
+            }
             return id;
         }
 

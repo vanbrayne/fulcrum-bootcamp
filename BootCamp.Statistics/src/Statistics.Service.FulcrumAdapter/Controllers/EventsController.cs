@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Web.Http;
 using Statistics.Service.FulcrumAdapter.Contract;
-using UserStatistics.Service.FulcrumAdapter.RestClients;
+using Statistics.Service.FulcrumAdapter.RestClients;
 using Xlent.Lever.Authentication.Sdk.Attributes;
 using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Error.Logic;
