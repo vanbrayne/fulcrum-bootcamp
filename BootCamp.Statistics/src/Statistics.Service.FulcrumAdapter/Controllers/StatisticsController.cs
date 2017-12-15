@@ -5,14 +5,14 @@ using Xlent.Lever.Authentication.Sdk.Attributes;
 using Xlent.Lever.Libraries2.Core.Error.Logic;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 
-namespace UserStatistics.Service.FulcrumAdapter.Controllers
+namespace Statistics.Service.FulcrumAdapter.Controllers
 {
     /// <summary>
-    /// UserStatisticsController
+    /// StatisticsController
     /// </summary>
     [FulcrumAuthorize(AuthenticationRoleEnum.InternalSystemUser)]
-    [RoutePrefix("api/UserStatistics")]
-    public class UserStatisticsController : ApiController
+    [RoutePrefix("api/Statistics")]
+    public class StatisticsController : ApiController
     {
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace UserStatistics.Service.FulcrumAdapter.Controllers
         /// <exception cref="FulcrumNotImplementedException"></exception>
         [HttpGet]
         [Route("")]
-        public Task<Contract.UserStatistics> Read(string type = null, DateTimeOffset? startInclusive = null, DateTimeOffset? endExclusive = null)
+        public Task<Contract.Statistics> Read(string type = null, DateTimeOffset? startInclusive = null, DateTimeOffset? endExclusive = null)
         {
             // Tips: "type" can be "private" or "public", see http://lever.xlent-fulcrum.info/wiki/Bootcamp_course#user.type
             throw new FulcrumNotImplementedException();

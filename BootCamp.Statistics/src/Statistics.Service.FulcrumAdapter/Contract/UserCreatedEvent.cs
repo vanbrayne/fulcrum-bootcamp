@@ -1,4 +1,4 @@
-﻿namespace UserStatistics.Service.FulcrumAdapter.Contract
+﻿namespace Statistics.Service.FulcrumAdapter.Contract
 {
     /// <summary>
     /// This event is published whenever a new user as been created

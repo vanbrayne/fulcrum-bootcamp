@@ -8,21 +8,21 @@ using Xlent.Lever.KeyTranslator.Sdk;
 
 namespace Api.Service.Controllers
 {
-    [RoutePrefix("UserStatistics")]
-    public class UserStatisticsController : ApiController
+    [RoutePrefix("Statistics")]
+    public class StatisticsController : ApiController
     {
         private readonly ITranslateClient _translateClient;
-        private readonly IUserStatisticsClient _userStatisticsClient;
+        private readonly IStatisticsClient _StatisticsClient;
 
-        public UserStatisticsController(IUserStatisticsClient userStatisticsClient, ITranslateClient translateClient)
+        public StatisticsController(IStatisticsClient StatisticsClient, ITranslateClient translateClient)
         {
-            _userStatisticsClient = userStatisticsClient;
+            _StatisticsClient = StatisticsClient;
             _translateClient = translateClient;
         }
 
         [Route("")]
         [HttpGet]
-        public async Task<UserStatistics> Get(string type = null, DateTimeOffset? startInclusive = null, DateTimeOffset? endExclusive = null)
+        public async Task<Statistics> Get(string type = null, DateTimeOffset? startInclusive = null, DateTimeOffset? endExclusive = null)
         {
             if (!string.IsNullOrWhiteSpace(type))
             {
@@ -31,7 +31,7 @@ namespace Api.Service.Controllers
                     .ExecuteAsync();
             }
 
-            return await _userStatisticsClient.GetStatistics(type, startInclusive, endExclusive);
+            return await _StatisticsClient.GetStatistics(type, startInclusive, endExclusive);
         }
     }
 }

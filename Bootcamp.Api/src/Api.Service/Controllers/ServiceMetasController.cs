@@ -23,16 +23,16 @@ namespace Api.Service.Controllers
         private readonly ITokenRefresherWithServiceClient _tokenRefresher;
         private readonly IVisualNotificationClient _visualNotificationClient;
         private readonly ICustomerMasterClient _customerMasterClient;
-        private readonly IUserStatisticsClient _userStatisticsClient;
+        private readonly IStatisticsClient _StatisticsClient;
 
-        public ServiceMetasController(ITenant tenant, ITranslateClient translateClient, ITokenRefresherWithServiceClient tokenRefresher, IVisualNotificationClient visualNotificationClient, ICustomerMasterClient customerMasterClient, IUserStatisticsClient userStatisticsClient)
+        public ServiceMetasController(ITenant tenant, ITranslateClient translateClient, ITokenRefresherWithServiceClient tokenRefresher, IVisualNotificationClient visualNotificationClient, ICustomerMasterClient customerMasterClient, IStatisticsClient StatisticsClient)
         {
             _tenant = tenant;
             _translateClient = translateClient;
             _tokenRefresher = tokenRefresher;
             _visualNotificationClient = visualNotificationClient;
             _customerMasterClient = customerMasterClient;
-            _userStatisticsClient = userStatisticsClient;
+            _StatisticsClient = StatisticsClient;
         }
 
         [Route("ServiceHealth")]
@@ -48,7 +48,7 @@ namespace Api.Service.Controllers
             aggregator.AddHealthResponse(await CheckValueTranslation());
             aggregator.AddHealthResponse(await CheckVisualNotificationCapability());
             aggregator.AddHealthResponse(await CheckCustomerMasterCapability());
-            aggregator.AddHealthResponse(await CheckUserStatisticsCapability());
+            aggregator.AddHealthResponse(await CheckStatisticsCapability());
             return aggregator.GetAggregatedHealthResponse();
         }
 
@@ -69,9 +69,9 @@ namespace Api.Service.Controllers
                 };
             }
         }
-        private async Task<HealthResponse> CheckUserStatisticsCapability()
+        private async Task<HealthResponse> CheckStatisticsCapability()
         {
-            return await CheckWithBaseClient("User Statistics Capability", _userStatisticsClient);
+            return await CheckWithBaseClient("User Statistics Capability", _StatisticsClient);
         }
 
         private async Task<HealthResponse> CheckCustomerMasterCapability()

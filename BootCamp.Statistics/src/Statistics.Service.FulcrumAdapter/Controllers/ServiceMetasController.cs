@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
 using Xlent.Lever.Libraries2.Core.Health.Model;
 
-namespace UserStatistics.Service.FulcrumAdapter.Controllers
+namespace Statistics.Service.FulcrumAdapter.Controllers
 {
     /// <summary>
     /// Meta services

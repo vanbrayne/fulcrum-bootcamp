@@ -6,7 +6,7 @@ using Xlent.Lever.Libraries2.Core.Logging;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 using Xlent.Lever.Libraries2.WebApi.RestClientHelper;
 
-namespace UserStatistics.Service.FulcrumAdapter.RestClients
+namespace Statistics.Service.FulcrumAdapter.RestClients
 {
     /// <summary>
     /// Client for publishing events.
