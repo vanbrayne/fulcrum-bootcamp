@@ -55,21 +55,21 @@ namespace CustomerMaster.Service.FulcrumAdapter.RestClients
         /// <inheritdoc />
         public async Task VisualNotificationSuccessAsync()
         {
-            var relativeUrl = $"api/Notifications/Success";
+            var relativeUrl = $"api/VisualNotifications/Success";
             await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
 
         /// <inheritdoc />
         public async Task VisualNotificationWarningAsync()
         {
-            var relativeUrl = $"api/Notifications/Warning";
+            var relativeUrl = $"api/VisualNotifications/Warning";
             await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
 
         /// <inheritdoc />
         public async Task VisualNotificationErrorAsync()
         {
-            var relativeUrl = $"api/Notifications/Error";
+            var relativeUrl = $"api/VisualNotifications/Error";
             await RestClient.PostNoResponseContentAsync(relativeUrl);
         }
     }
