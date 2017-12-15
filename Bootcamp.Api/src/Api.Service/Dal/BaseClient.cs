@@ -9,6 +9,7 @@ namespace Api.Service.Dal
     public interface IBaseClient
     {
         Task<HealthResponse> GetServiceHealthAsync();
+        string BaseUri { get; }
     }
 
     public abstract class BaseClient : IBaseClient
@@ -26,6 +27,7 @@ namespace Api.Service.Dal
 
         protected BaseClient(string baseUri, ServiceClientCredentials authenticationCredentials)
         {
+            BaseUri = baseUri;
             RestClient = new RestClient(GetUriStart(baseUri), authenticationCredentials);
         }
 
@@ -34,5 +36,7 @@ namespace Api.Service.Dal
             var relativeUrl = "api/ServiceMetas/ServiceHealth";
             return await RestClient.GetAsync<HealthResponse>(relativeUrl);
         }
+
+        public string BaseUri { get; }
     }
 }

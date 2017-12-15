@@ -33,5 +33,14 @@ namespace PhilipsHue.Service.FulcrumAdapter.RestClients
         {
             RestClient = new RestClient(GetUriStart(baseUri), authenticationToken);
         }
+
+        /// <summary>
+        /// BaseClient constructor
+        /// </summary>
+        /// <param name="baseUri"></param>
+        protected BaseClient(string baseUri)
+        {
+            RestClient = new RestClient(GetUriStart(baseUri));
+        }
     }
 }
