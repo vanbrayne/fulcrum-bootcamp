@@ -29,7 +29,7 @@ namespace CustomerMaster.Service.FulcrumAdapter.RestClients
             };
             const string relativeUrl = "api/Authentication/Tokens";
             var restClient = new RestClient(GetUriStart(baseUri));
-            return await restClient.PostAsync<AuthenticationToken, AuthenticationCredentials > (relativeUrl, credentials);
+            return await restClient.PostAsync<AuthenticationToken, AuthenticationCredentials> (relativeUrl, credentials);
         }
 
         /// <inheritdoc />

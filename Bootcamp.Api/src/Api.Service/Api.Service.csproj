@@ -15,7 +15,7 @@
     <RootNamespace>Api.Service</RootNamespace>
     <AssemblyName>Api.Service</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -120,7 +120,7 @@
       <HintPath>..\..\packages\Xlent.Lever.Libraries2.Core.NetFramework.1.16.0\lib\net46\Xlent.Lever.Libraries2.Core.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Xlent.Lever.Libraries2.WebApi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Xlent.Lever.Libraries2.WebApi.4.3.13\lib\net46\Xlent.Lever.Libraries2.WebApi.dll</HintPath>
+      <HintPath>..\..\packages\Xlent.Lever.Libraries2.WebApi.4.3.14\lib\net46\Xlent.Lever.Libraries2.WebApi.dll</HintPath>
     </Reference>
     <Reference Include="Xlent.Lever.Logger.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xlent.Lever.Logger.Sdk.4.12.2\lib\net46\Xlent.Lever.Logger.Common.dll</HintPath>
