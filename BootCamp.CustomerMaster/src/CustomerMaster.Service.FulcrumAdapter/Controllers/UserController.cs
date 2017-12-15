@@ -22,6 +22,7 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
     {
         private readonly ICrud<User, string> _persistance;
         private readonly IApiClient _apiClient;
+        private readonly Guid _userCreatedPublicationId = new Guid("CCF45DCB-E022-4419-BB24-E96361F16F13");
 
         /// <summary>
         /// Constructor
@@ -53,13 +54,14 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
                 Type = user.Type,
                 CreatedAt = DateTimeOffset.Now
             };
+            var json = JObject.FromObject(eventBody);
             if (FulcrumApplication.IsInDevelopment)
             {
+                await _apiClient.PublishAsync("User", "Created", 1, 0, json);
             }
             else
             {
-                await _apiClient.PublishAsync(new Guid("CCF45DCB-E022-4419-BB24-E96361F16F13"),
-                    JObject.FromObject(eventBody));
+                await _apiClient.PublishAsync(_userCreatedPublicationId, json);
             }
             return id;
         }
