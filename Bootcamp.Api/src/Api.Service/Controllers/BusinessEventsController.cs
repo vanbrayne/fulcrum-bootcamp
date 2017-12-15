@@ -49,7 +49,7 @@ namespace Api.Service.Controllers
             ServiceContract.RequireNotNullOrWhitespace(eventName, nameof(eventName));
             ServiceContract.RequireGreaterThanOrEqualTo(1, majorVersion, nameof(majorVersion));
             ServiceContract.RequireGreaterThanOrEqualTo(0, minorVersion, nameof(minorVersion));
-
+            FulcrumAssert.IsTrue(FulcrumApplication.IsInDevelopment, $"This method can only be called in run time level Development. The run time level was {FulcrumApplication.Setup.RunTimeLevel}");
             var correlationId = new CorrelationIdValueProvider().CorrelationId;
 
             await new BusinessEvents(_tokenRefresher.GetServiceClient(), _subscribers).PublishAsync(entityName, eventName, majorVersion, minorVersion, content, correlationId);
