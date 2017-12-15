@@ -1,34 +1,18 @@
 ﻿using System;
 using Xlent.Lever.Libraries2.Core.Assert;
 
-namespace UserStatistics.Service.FulcrumAdapter.Contract
+namespace Api.Service.Models
 {
-    /// <summary>
-    /// User statistics over a time interval.
-    /// </summary>
-    public class UserStatistics : IValidatable
+    public class Statistics : IValidatable
     {
-        /// <summary>
-        /// The type of user (internal/external)
-        /// </summary>
         public string Type { get; set; }
 
-        /// <summary>
-        /// The start time for the statistics, inclusive the given time.
-        /// </summary>
         public DateTimeOffset? StartInclusive { get; set; }
 
-        /// <summary>
-        /// The end time for the statistics, exclusive the given time.
-        /// </summary>
         public DateTimeOffset? EndExlusive { get; set; }
 
-        /// <summary>
-        /// The number of created users in the time interval [<see cref="StartInclusive"/>, <see cref="EndExlusive"/>[. 
-        /// </summary>
         public int Created { get; set; }
 
-        /// <inheritdoc />
         public void Validate(string errorLocation, string propertyPath = "")
         {
             if (Type != null)

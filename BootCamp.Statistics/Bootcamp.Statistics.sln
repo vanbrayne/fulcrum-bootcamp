@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserStatistics.Service.FulcrumAdapter", "src\UserStatistics.Service.FulcrumAdapter\UserStatistics.Service.FulcrumAdapter.csproj", "{4EE01292-B192-4087-B35C-688CF400009F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Statistics.Service.FulcrumAdapter", "src\Statistics.Service.FulcrumAdapter\Statistics.Service.FulcrumAdapter.csproj", "{4EE01292-B192-4087-B35C-688CF400009F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

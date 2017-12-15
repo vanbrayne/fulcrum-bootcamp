@@ -1,12 +1,12 @@
 using System.Web.Http;
 using WebActivatorEx;
-using UserStatistics.Service.FulcrumAdapter;
+using Statistics.Service.FulcrumAdapter;
 using Swashbuckle.Application;
 #pragma warning disable 1591
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace UserStatistics.Service.FulcrumAdapter
+namespace Statistics.Service.FulcrumAdapter
 {
     public class SwaggerConfig
     {
@@ -33,7 +33,7 @@ namespace UserStatistics.Service.FulcrumAdapter
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
                         //
-                        c.SingleApiVersion("v1", "UserStatistics.Service.FulcrumAdapter");
+                        c.SingleApiVersion("v1", "Statistics.Service.FulcrumAdapter");
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //

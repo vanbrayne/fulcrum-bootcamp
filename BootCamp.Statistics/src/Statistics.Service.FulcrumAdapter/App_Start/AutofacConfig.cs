@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Web.Http;
 using Autofac;
 using Autofac.Integration.WebApi;
-using UserStatistics.Service.FulcrumAdapter.RestClients;
+using Statistics.Service.FulcrumAdapter.RestClients;
 using Xlent.Lever.Libraries2.Core.Application;
 using Xlent.Lever.Libraries2.Core.MultiTenant.Context;
 using Xlent.Lever.Libraries2.Core.MultiTenant.Model;
@@ -12,7 +12,7 @@ using Xlent.Lever.Libraries2.Core.Storage.Model;
 
 #pragma warning disable 1591
 
-namespace UserStatistics.Service.FulcrumAdapter
+namespace Statistics.Service.FulcrumAdapter
 {
     public static class AutofacConfig
     {
@@ -21,7 +21,7 @@ namespace UserStatistics.Service.FulcrumAdapter
             var builder = new ContainerBuilder();
 
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-            builder.RegisterType<MemoryPersistance<Contract.UserStatistics, string>>().As<ICrud<Contract.UserStatistics, string>>().SingleInstance();
+            builder.RegisterType<MemoryPersistance<Contract.Statistics, string>>().As<ICrud<Contract.Statistics, string>>().SingleInstance();
 
             builder.RegisterType<TenantConfigurationValueProvider>().As<ITenantConfigurationValueProvider>().SingleInstance();
 
