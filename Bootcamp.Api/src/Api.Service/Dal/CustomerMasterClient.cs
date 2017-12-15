@@ -16,7 +16,7 @@ namespace Api.Service.Dal
 
 
         //TODO: Tutorial 1 - Implement this method
-        public Task<string> GetUser(string id)
+        public Task<User> GetUser(string id)
         {
             throw new FulcrumNotImplementedException();
         }

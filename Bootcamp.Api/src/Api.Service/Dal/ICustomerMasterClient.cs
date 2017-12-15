@@ -7,7 +7,7 @@ namespace Api.Service.Dal
 {
     public interface ICustomerMasterClient : IBaseClient
     {
-        Task<string> GetUser(string id);
+        Task<User> GetUser(string id);
         Task<List<User>> GetUsers(string type = null);
         Task<string> UpdateUser(User user);
         Task<string> AddUser(User user);
