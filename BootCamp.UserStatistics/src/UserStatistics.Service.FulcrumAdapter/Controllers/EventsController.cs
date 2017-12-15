@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 using UserStatistics.Service.FulcrumAdapter.Contract;
+using UserStatistics.Service.FulcrumAdapter.RestClients;
 using Xlent.Lever.Authentication.Sdk.Attributes;
 using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Error.Logic;
@@ -15,6 +17,18 @@ namespace UserStatistics.Service.FulcrumAdapter.Controllers
     [RoutePrefix("api/Events")]
     public class EventsController : ApiController
     {
+        private readonly IApiClient _apiClient;
+
+        /// <inheritdoc />
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="apiClient"></param>
+        public EventsController(IApiClient apiClient)
+        {
+            _apiClient = apiClient;
+        }
+
         /// <summary>
         /// Subscription for the User.Created event.
         /// </summary>
@@ -27,9 +41,19 @@ namespace UserStatistics.Service.FulcrumAdapter.Controllers
         {
             ServiceContract.RequireNotNull(eventBody, nameof(eventBody));
 
-            // TODO: implement
-
-            await Task.Yield();
+            switch (eventBody.Type)
+            {
+                case "public":
+                    await _apiClient.VisualNotificationSuccessAsync();
+                    break;
+                case "private":
+                    await _apiClient.VisualNotificationWarningAsync();
+                    break;
+                default:
+                    await _apiClient.VisualNotificationErrorAsync();
+                    ServiceContract.Fail($"Unexpected user type: {eventBody.Type}");
+                    break;
+            }
         }
 
         /// <summary>
