@@ -12,12 +12,12 @@ namespace Api.Service.Controllers
 {
     [RoutePrefix("api/Users")]
     // TODO: enable [FulcrumAuthorize(AuthenticationRoleEnum.ExternalSystemUser)]
-    public class UserController : ApiController
+    public class UsersController : ApiController
     {
         private readonly ICustomerMasterClient _customerMasterClient;
         private readonly ITranslateClient _translateClient;
 
-        public UserController(ICustomerMasterClient customerMasterClient, ITranslateClient translateClient)
+        public UsersController(ICustomerMasterClient customerMasterClient, ITranslateClient translateClient)
         {
             _customerMasterClient = customerMasterClient;
             _translateClient = translateClient;
