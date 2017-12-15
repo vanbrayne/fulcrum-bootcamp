@@ -23,7 +23,7 @@ namespace Api.Service.Controllers
 
 
         private static readonly string BusinessEventsBaseUrl = ConfigurationManager.AppSettings["BusinessEvents.Url"];
-        private readonly string[] _subscribers = { "http://localhost:51752" };
+        private readonly string[] _subscribers = { "http://localhost:51752/api/Events" };
 
         public BusinessEventsController(ITenant tenant, ITokenRefresherWithServiceClient tokenRefresher)
         {
