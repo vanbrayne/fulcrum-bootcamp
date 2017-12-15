@@ -14,13 +14,6 @@ namespace Api.Service.Dal
         {
         }
 
-
-        //TODO: Tutorial 1 - Implement this method
-        public Task<string> GetUser(string id)
-        {
-            throw new FulcrumNotImplementedException();
-        }
-
         public async Task<List<User>> GetUsers(string type = null)
         {
             var relativeUrl = "api/Users";
