@@ -51,9 +51,9 @@ namespace Api.Service.Dal
             throw new FulcrumNotImplementedException();
         }
 
-        public async Task<UserStatistics> GetStatistics(string type = null, DateTimeOffset? startInclusive = null, DateTimeOffset? endExclusive = null)
+        public async Task<Statistics> GetStatistics(string type = null, DateTimeOffset? startInclusive = null, DateTimeOffset? endExclusive = null)
         {
-            var relativeUrl = "api/UserStatistics?";
+            var relativeUrl = "api/Statistics?";
             if (startInclusive != null)
                 relativeUrl += $"&startInclusive={startInclusive}";
             if(endExclusive != null)
@@ -61,7 +61,7 @@ namespace Api.Service.Dal
             if (type != null)
                 relativeUrl += $"&type={type}";
 
-            return await RestClient.GetAsync<UserStatistics>(relativeUrl);
+            return await RestClient.GetAsync<Statistics>(relativeUrl);
         }
     }
 }

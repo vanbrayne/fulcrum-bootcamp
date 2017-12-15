@@ -2,7 +2,7 @@
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using Swashbuckle.Application;
-using UserStatistics.Service.FulcrumAdapter;
+using Statistics.Service.FulcrumAdapter;
 using WebActivatorEx;
 using Xlent.Lever.Authentication.Sdk.Handlers;
 using Xlent.Lever.Libraries2.WebApi.Pipe.Inbound;
@@ -10,7 +10,7 @@ using Xlent.Lever.Libraries2.WebApi.Pipe.Inbound;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace UserStatistics.Service.FulcrumAdapter
+namespace Statistics.Service.FulcrumAdapter
 {
     public static class WebApiConfig
     {

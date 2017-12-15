@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Xlent.Lever.Libraries2.Core.Application;
+using Xlent.Lever.Libraries2.Core.Assert;
 using Xlent.Lever.Libraries2.Core.Logging;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 using Xlent.Lever.Libraries2.WebApi.RestClientHelper;
@@ -36,6 +37,19 @@ namespace CustomerMaster.Service.FulcrumAdapter.RestClients
         public async Task PublishAsync(Guid id, JObject eventBody)
         {
             var relativeUrl = $"api/BusinessEvents/Publish/{id}";
+            await RestClient.PostNoResponseContentAsync(relativeUrl, eventBody);
+        }
+
+        /// <inheritdoc />
+        public async Task PublishAsync(string entityName, string eventName, int majorVersion, int minorVersion, JObject eventBody)
+        {
+            InternalContract.RequireNotNullOrWhitespace(entityName, nameof(entityName));
+            InternalContract.RequireNotNullOrWhitespace(eventName, nameof(eventName));
+            InternalContract.RequireGreaterThanOrEqualTo(1, majorVersion, nameof(majorVersion));
+            InternalContract.RequireGreaterThanOrEqualTo(0, minorVersion, nameof(minorVersion));
+
+            FulcrumAssert.IsTrue(FulcrumApplication.IsInDevelopment, $"This method can only be called in run time level Development. The run time level was {FulcrumApplication.Setup.RunTimeLevel}");
+            var relativeUrl = $"api/BusinessEvents/{entityName}/{eventName}/{majorVersion}/{minorVersion}";
             await RestClient.PostNoResponseContentAsync(relativeUrl, eventBody);
         }
 

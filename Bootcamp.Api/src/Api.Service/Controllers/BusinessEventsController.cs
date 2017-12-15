@@ -23,7 +23,7 @@ namespace Api.Service.Controllers
 
 
         private static readonly string BusinessEventsBaseUrl = ConfigurationManager.AppSettings["BusinessEvents.Url"];
-        private readonly string[] _subscribers = { "http://localhost:51752" };
+        private readonly string[] _subscribers = { "http://localhost:51752/api/Events" };
 
         public BusinessEventsController(ITenant tenant, ITokenRefresherWithServiceClient tokenRefresher)
         {
@@ -41,7 +41,7 @@ namespace Api.Service.Controllers
             await new BusinessEvents(BusinessEventsBaseUrl, _tenant, _tokenRefresher.GetServiceClient()).PublishAsync(id, content);
         }
 
-        [Route("{entityName}/{eventName}/{majorVersion}")]
+        [Route("{entityName}/{eventName}/{majorVersion}/{minorVersion}")]
         [HttpPost]
         public async Task PublishMockAsync(string entityName, string eventName, int majorVersion, int minorVersion, JObject content)
         {
@@ -49,7 +49,7 @@ namespace Api.Service.Controllers
             ServiceContract.RequireNotNullOrWhitespace(eventName, nameof(eventName));
             ServiceContract.RequireGreaterThanOrEqualTo(1, majorVersion, nameof(majorVersion));
             ServiceContract.RequireGreaterThanOrEqualTo(0, minorVersion, nameof(minorVersion));
-
+            FulcrumAssert.IsTrue(FulcrumApplication.IsInDevelopment, $"This method can only be called in run time level Development. The run time level was {FulcrumApplication.Setup.RunTimeLevel}");
             var correlationId = new CorrelationIdValueProvider().CorrelationId;
 
             await new BusinessEvents(_tokenRefresher.GetServiceClient(), _subscribers).PublishAsync(entityName, eventName, majorVersion, minorVersion, content, correlationId);

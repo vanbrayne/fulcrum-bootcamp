@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using Xlent.Lever.Libraries2.Core.Logging;
 
-namespace UserStatistics.Service.FulcrumAdapter.RestClients
+namespace Statistics.Service.FulcrumAdapter.RestClients
 {
     /// <summary>
     /// Publish business events

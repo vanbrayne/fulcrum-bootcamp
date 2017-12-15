@@ -13,7 +13,7 @@ namespace Api.Service.Dal
         Task<string> AddUser(User user);
         Task DeleteUser(string id);
         Task DeleteUsers();
-        Task<UserStatistics> GetStatistics(string type, DateTimeOffset? startInclusive,
+        Task<Statistics> GetStatistics(string type, DateTimeOffset? startInclusive,
             DateTimeOffset? endExclusive);
     }
 }

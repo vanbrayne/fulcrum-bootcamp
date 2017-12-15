@@ -12,8 +12,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UserStatistics.Service.FulcrumAdapter</RootNamespace>
-    <AssemblyName>UserStatistics.Service.FulcrumAdapter</AssemblyName>
+    <RootNamespace>Statistics.Service.FulcrumAdapter</RootNamespace>
+    <AssemblyName>Statistics.Service.FulcrumAdapter</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -33,7 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\UserStatistics.Service.FulcrumAdapter.xml</DocumentationFile>
+    <DocumentationFile>bin\Statistics.Service.FulcrumAdapter.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -131,10 +131,10 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Contract\UserStatistics.cs" />
+    <Compile Include="Contract\Statistics.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\ServiceMetasController.cs" />
-    <Compile Include="Controllers\UserStatisticsController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Contract\UserCreatedEvent.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
