@@ -20,6 +20,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
     {
         private readonly IHueClient _hueClient;
         private readonly List<string> _lamps;
+        private static string _status = "No requests";
 
         /// <summary>
         /// Constructor
@@ -31,6 +32,14 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
             _lamps = new List<string> { "1" };
         }
 
+        [AllowAnonymous]
+        [Route("Status")]
+        [HttpGet]
+        public string GetStatus()
+        {
+            return $"<html><h1>{_status}</h1></html>";
+        }
+
         /// <inheritdoc />
         [HttpPost]
         [Route("Success")]
@@ -40,6 +49,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
             var command = new LightCommand();
             command.SetColor(ClientHelper.GetRgbColor(ClientHelper.ColorEnum.Green));
             command.Alert = Alert.Once;
+            _status = "Success";
             await _hueClient.SendCommandAsync(command, _lamps);
         }
 
@@ -52,6 +62,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
             var command = new LightCommand();
             command.SetColor(ClientHelper.GetRgbColor(ClientHelper.ColorEnum.Yellow));
             command.Alert = Alert.Once;
+            _status = "Warning";
             await _hueClient.SendCommandAsync(command, _lamps);
         }
 
@@ -64,6 +75,7 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
             var command = new LightCommand();
             command.SetColor(ClientHelper.GetRgbColor(ClientHelper.ColorEnum.Red));
             command.Alert = Alert.Once;
+            _status = "Error";
             await _hueClient.SendCommandAsync(command, _lamps);
         }
     }
