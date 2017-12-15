@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.ExceptionHandling;
 using PhilipsHue.Service.FulcrumAdapter;
 using Swashbuckle.Application;
@@ -23,6 +24,9 @@ namespace PhilipsHue.Service.FulcrumAdapter
             config.MessageHandlers.Add(new TokenValidationHandler());
             config.MessageHandlers.Add(new SaveCorrelationId());
             config.MessageHandlers.Add(new LogRequestAndResponse());
+
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors);
 
             // Redirect root to Swagger UI
             config.Routes.MapHttpRoute(
