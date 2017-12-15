@@ -130,7 +130,6 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Contract\IUserStatisticsController.cs" />
     <Compile Include="Contract\UserStatistics.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\ServiceMetasController.cs" />
