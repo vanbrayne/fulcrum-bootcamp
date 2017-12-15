@@ -29,14 +29,14 @@ namespace UserStatistics.Service.FulcrumAdapter.RestClients
             };
             const string relativeUrl = "api/Authentication/Tokens";
             var restClient = new RestClient(GetUriStart(baseUri));
-            return await restClient.PostAsync<AuthenticationToken, AuthenticationCredentials > (relativeUrl, credentials);
+            return await restClient.PostAsync<AuthenticationToken, AuthenticationCredentials> (relativeUrl, credentials);
         }
 
         /// <inheritdoc />
         public async Task PublishAsync(Guid id, JObject eventBody)
         {
             var relativeUrl = $"api/BusinessEvents/Publish/{id}";
-            await RestClient.PostAsync<string, JObject>(relativeUrl, eventBody);
+            await RestClient.PostNoResponseContentAsync(relativeUrl, eventBody);
         }
 
         /// <inheritdoc />
