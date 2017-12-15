@@ -93,7 +93,7 @@ namespace CustomerMaster.Service.FulcrumAdapter.Controllers
         {
             ServiceContract.RequireNotNullOrWhitespace(id, nameof(id));
             ServiceContract.RequireValidated(user, nameof(user));
-
+            //TODO: Tutorial 3 - Publish an event here
             await _persistance.UpdateAsync(user.Id, user);
         }
 

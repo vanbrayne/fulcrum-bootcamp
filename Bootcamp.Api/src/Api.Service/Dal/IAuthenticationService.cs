@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Api.Service.Models;
-using Xlent.Lever.Libraries2.Core.MultiTenant.Model;
 using Xlent.Lever.Libraries2.Core.Platform.Authentication;
 
 namespace Api.Service.Dal
