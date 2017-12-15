@@ -32,12 +32,15 @@ namespace PhilipsHue.Service.FulcrumAdapter.Controllers
             _lamps = new List<string> { "1" };
         }
 
+        /// <summary>
+        /// Status
+        /// </summary>
         [AllowAnonymous]
         [Route("Status")]
         [HttpGet]
         public string GetStatus()
         {
-            return $"<html><h1>{_status}</h1></html>";
+            return _status;
         }
 
         /// <inheritdoc />
