@@ -154,9 +154,9 @@
     <Compile Include="Controllers\ServiceMetasController.cs" />
     <Compile Include="Controllers\LogController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
-    <Compile Include="Controllers\VisualNotificationController.cs" />
+    <Compile Include="Controllers\VisualNotificationsController.cs" />
     <Compile Include="Controllers\BusinessEventsController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UserStatisticsController.cs" />
     <Compile Include="Dal\AuthenticationService.cs" />
     <Compile Include="Dal\BaseClient.cs" />

@@ -4,11 +4,11 @@ using Api.Service.Dal;
 
 namespace Api.Service.Controllers
 {
-    [RoutePrefix("api/VisualNotification")]
-    public class VisualNotificationController : ApiController
+    [RoutePrefix("api/VisualNotifications")]
+    public class VisualNotificationsController : ApiController
     {
         private readonly IVisualNotificationClient _client;
-        public VisualNotificationController(IVisualNotificationClient client)
+        VisualNotificationsController(IVisualNotificationClient client)
         {
             _client = client;
         }
